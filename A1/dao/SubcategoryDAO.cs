@@ -57,7 +57,7 @@ namespace A1.dao
                 dr.Read();
                 subcategory.Id = (int)dr["id"];
                 subcategory.Name = dr["name"].ToString();
-                subcategory.Category.Id = (int)dr["id"];
+                subcategory.Category = CategoryDAO.findById((int)dr["id"]);
             }
             else
                 subcategory = null;
@@ -71,7 +71,6 @@ namespace A1.dao
             cmd.CommandText = "SELECT * FROM subcategory";
             SqlDataReader dr = Connection.select(cmd);
             List<Subcategory> subcategories = new List<Subcategory>();
-            SubcategoryDAO subcategoryDAO = new SubcategoryDAO();
 
             if (dr.HasRows)
             {

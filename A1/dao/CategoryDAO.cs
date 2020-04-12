@@ -68,7 +68,6 @@ namespace A1.dao
             cmd.CommandText = "SELECT * FROM category";
             SqlDataReader dr = Connection.select(cmd);
             List<Category> categories = new List<Category>();
-            CategoryDAO categoryDAO = new CategoryDAO();
 
             if (dr.HasRows)
             {

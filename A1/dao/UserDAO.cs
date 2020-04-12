@@ -37,6 +37,7 @@ namespace A1.dao
             cmd.Parameters.AddWithValue("@password", user.Password);
             cmd.Parameters.AddWithValue("@telephone", user.Telephone);
             cmd.Parameters.AddWithValue("@type_user", user.TypeUser);
+            cmd.Parameters.AddWithValue("@id", user.Id);
             if (Connection.crud(cmd))
                 return user;
             return null;
@@ -80,7 +81,6 @@ namespace A1.dao
             cmd.CommandText = "SELECT * FROM user";
             SqlDataReader dr = Connection.select(cmd);
             List<User> users = new List<User>();
-            UserDAO userDAO = new UserDAO();
 
             if (dr.HasRows)
             {

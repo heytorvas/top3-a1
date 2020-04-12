@@ -48,8 +48,11 @@
   <ItemGroup>
     <Compile Include="dao\CategoryDAO.cs" />
     <Compile Include="dao\Connection.cs" />
+    <Compile Include="dao\EntryDAO.cs" />
+    <Compile Include="dao\ProductDAO.cs" />
     <Compile Include="dao\SubcategoryDAO.cs" />
     <Compile Include="dao\UserDAO.cs" />
+    <Compile Include="dao\WithdrawalDAO.cs" />
     <Compile Include="model\Category.cs" />
     <Compile Include="model\Entry.cs" />
     <Compile Include="model\Product.cs" />
