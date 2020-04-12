@@ -46,7 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="a1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>a1DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dao\Connection.cs" />
+    <Compile Include="dao\UserDAO.cs" />
+    <Compile Include="model\Category.cs" />
+    <Compile Include="model\Entry.cs" />
+    <Compile Include="model\Product.cs" />
+    <Compile Include="model\Subcategory.cs" />
+    <Compile Include="model\Image.cs" />
+    <Compile Include="model\TypeUser.cs" />
     <Compile Include="model\User.cs" />
+    <Compile Include="model\Withdrawal.cs" />
     <Compile Include="view\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +90,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="a1DataSet.xsc">
+      <DependentUpon>a1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="a1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>a1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="a1DataSet.xss">
+      <DependentUpon>a1DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,7 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controller\" />
-    <Folder Include="dao\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
