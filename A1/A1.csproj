@@ -46,12 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="a1DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>a1DataSet.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="dao\CategoryDAO.cs" />
     <Compile Include="dao\Connection.cs" />
+    <Compile Include="dao\SubcategoryDAO.cs" />
     <Compile Include="dao\UserDAO.cs" />
     <Compile Include="model\Category.cs" />
     <Compile Include="model\Entry.cs" />
@@ -90,17 +87,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="a1DataSet.xsc">
-      <DependentUpon>a1DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="a1DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>a1DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="a1DataSet.xss">
-      <DependentUpon>a1DataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
