@@ -67,7 +67,7 @@ namespace A1.dao
                 user.Cpf = dr["cpf"].ToString();
                 user.Email = dr["password"].ToString();
                 user.Telephone = dr["telephone"].ToString();
-                // TODO cast enum: user.TypeUser = (int)dr["type_user"];
+                user.TypeUser = (TypeUser)dr["type_user"];
             }
             else
                 user = null;
@@ -93,7 +93,7 @@ namespace A1.dao
                     user.Cpf = dr["cpf"].ToString();
                     user.Email = dr["password"].ToString();
                     user.Telephone = dr["telephone"].ToString();
-                    // TODO cast enum: user.TypeUser = (int)dr["type_user"];
+                    user.TypeUser = (TypeUser)dr["type_user"];
                     users.Add(user);
                 }
             }

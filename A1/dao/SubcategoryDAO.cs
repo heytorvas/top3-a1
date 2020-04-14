@@ -12,7 +12,6 @@ namespace A1.dao
 {
     public class SubcategoryDAO
     {
-
         public Subcategory insert(Subcategory subcategory)
         {
             SqlCommand cmd = new SqlCommand();

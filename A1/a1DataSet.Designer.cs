@@ -2729,9 +2729,9 @@ namespace A1 {
             
             private global::System.Data.DataColumn columnproduct_id;
             
-            private global::System.Data.DataColumn columnquantity;
+            private global::System.Data.DataColumn columnquantity_withdrawal;
             
-            private global::System.Data.DataColumn columndate;
+            private global::System.Data.DataColumn columndate_withdrawal;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2792,17 +2792,17 @@ namespace A1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn quantityColumn {
+            public global::System.Data.DataColumn quantity_withdrawalColumn {
                 get {
-                    return this.columnquantity;
+                    return this.columnquantity_withdrawal;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn dateColumn {
+            public global::System.Data.DataColumn date_withdrawalColumn {
                 get {
-                    return this.columndate;
+                    return this.columndate_withdrawal;
                 }
             }
             
@@ -2843,14 +2843,14 @@ namespace A1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public withdrawalRow AddwithdrawalRow(userRow parentuserRowByFK_withdrawal_user, productRow parentproductRowByFK_withdrawal_product, int quantity, System.DateTime date) {
+            public withdrawalRow AddwithdrawalRow(userRow parentuserRowByFK_withdrawal_user, productRow parentproductRowByFK_withdrawal_product, int quantity_withdrawal, System.DateTime date_withdrawal) {
                 withdrawalRow rowwithdrawalRow = ((withdrawalRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         null,
-                        quantity,
-                        date};
+                        quantity_withdrawal,
+                        date_withdrawal};
                 if ((parentuserRowByFK_withdrawal_user != null)) {
                     columnValuesArray[1] = parentuserRowByFK_withdrawal_user[0];
                 }
@@ -2889,8 +2889,8 @@ namespace A1 {
                 this.columnid = base.Columns["id"];
                 this.columnuser_id = base.Columns["user_id"];
                 this.columnproduct_id = base.Columns["product_id"];
-                this.columnquantity = base.Columns["quantity"];
-                this.columndate = base.Columns["date"];
+                this.columnquantity_withdrawal = base.Columns["quantity_withdrawal"];
+                this.columndate_withdrawal = base.Columns["date_withdrawal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2902,10 +2902,10 @@ namespace A1 {
                 base.Columns.Add(this.columnuser_id);
                 this.columnproduct_id = new global::System.Data.DataColumn("product_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproduct_id);
-                this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnquantity);
-                this.columndate = new global::System.Data.DataColumn("date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndate);
+                this.columnquantity_withdrawal = new global::System.Data.DataColumn("quantity_withdrawal", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnquantity_withdrawal);
+                this.columndate_withdrawal = new global::System.Data.DataColumn("date_withdrawal", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndate_withdrawal);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -4006,33 +4006,33 @@ namespace A1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int quantity {
+            public int quantity_withdrawal {
                 get {
                     try {
-                        return ((int)(this[this.tablewithdrawal.quantityColumn]));
+                        return ((int)(this[this.tablewithdrawal.quantity_withdrawalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'quantity\' in table \'withdrawal\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'quantity_withdrawal\' in table \'withdrawal\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablewithdrawal.quantityColumn] = value;
+                    this[this.tablewithdrawal.quantity_withdrawalColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime date {
+            public System.DateTime date_withdrawal {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tablewithdrawal.dateColumn]));
+                        return ((global::System.DateTime)(this[this.tablewithdrawal.date_withdrawalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'date\' in table \'withdrawal\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'date_withdrawal\' in table \'withdrawal\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablewithdrawal.dateColumn] = value;
+                    this[this.tablewithdrawal.date_withdrawalColumn] = value;
                 }
             }
             
@@ -4084,26 +4084,26 @@ namespace A1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsquantityNull() {
-                return this.IsNull(this.tablewithdrawal.quantityColumn);
+            public bool Isquantity_withdrawalNull() {
+                return this.IsNull(this.tablewithdrawal.quantity_withdrawalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetquantityNull() {
-                this[this.tablewithdrawal.quantityColumn] = global::System.Convert.DBNull;
+            public void Setquantity_withdrawalNull() {
+                this[this.tablewithdrawal.quantity_withdrawalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsdateNull() {
-                return this.IsNull(this.tablewithdrawal.dateColumn);
+            public bool Isdate_withdrawalNull() {
+                return this.IsNull(this.tablewithdrawal.date_withdrawalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetdateNull() {
-                this[this.tablewithdrawal.dateColumn] = global::System.Convert.DBNull;
+            public void Setdate_withdrawalNull() {
+                this[this.tablewithdrawal.date_withdrawalColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7165,50 +7165,49 @@ SELECT id, name, cpf, email, password, telephone, type_user FROM [user] WHERE (i
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("user_id", "user_id");
             tableMapping.ColumnMappings.Add("product_id", "product_id");
-            tableMapping.ColumnMappings.Add("quantity", "quantity");
-            tableMapping.ColumnMappings.Add("date", "date");
+            tableMapping.ColumnMappings.Add("quantity_withdrawal", "quantity_withdrawal");
+            tableMapping.ColumnMappings.Add("date_withdrawal", "date_withdrawal");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[withdrawal] WHERE (([id] = @Original_id) AND ((@IsNull_user_id = 1 AND [user_id] IS NULL) OR ([user_id] = @Original_user_id)) AND ((@IsNull_product_id = 1 AND [product_id] IS NULL) OR ([product_id] = @Original_product_id)) AND ((@IsNull_quantity = 1 AND [quantity] IS NULL) OR ([quantity] = @Original_quantity)) AND ((@IsNull_date = 1 AND [date] IS NULL) OR ([date] = @Original_date)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[withdrawal] WHERE (([id] = @Original_id) AND ((@IsNull_user_id = 1 AND [user_id] IS NULL) OR ([user_id] = @Original_user_id)) AND ((@IsNull_product_id = 1 AND [product_id] IS NULL) OR ([product_id] = @Original_product_id)) AND ((@IsNull_quantity_withdrawal = 1 AND [quantity_withdrawal] IS NULL) OR ([quantity_withdrawal] = @Original_quantity_withdrawal)) AND ((@IsNull_date_withdrawal = 1 AND [date_withdrawal] IS NULL) OR ([date_withdrawal] = @Original_date_withdrawal)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_product_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "product_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_product_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "product_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_quantity_withdrawal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity_withdrawal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity_withdrawal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity_withdrawal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_date_withdrawal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_withdrawal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date_withdrawal", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_withdrawal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[withdrawal] ([user_id], [product_id], [quantity], [date]) VALU" +
-                "ES (@user_id, @product_id, @quantity, @date);\r\nSELECT id, user_id, product_id, q" +
-                "uantity, date FROM withdrawal WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[withdrawal] ([user_id], [product_id], [quantity_withdrawal], [date_withdrawal]) VALUES (@user_id, @product_id, @quantity_withdrawal, @date_withdrawal);
+SELECT id, user_id, product_id, quantity_withdrawal, date_withdrawal FROM withdrawal WHERE (id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@product_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "product_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity_withdrawal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity_withdrawal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date_withdrawal", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_withdrawal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[withdrawal] SET [user_id] = @user_id, [product_id] = @product_id, [quantity] = @quantity, [date] = @date WHERE (([id] = @Original_id) AND ((@IsNull_user_id = 1 AND [user_id] IS NULL) OR ([user_id] = @Original_user_id)) AND ((@IsNull_product_id = 1 AND [product_id] IS NULL) OR ([product_id] = @Original_product_id)) AND ((@IsNull_quantity = 1 AND [quantity] IS NULL) OR ([quantity] = @Original_quantity)) AND ((@IsNull_date = 1 AND [date] IS NULL) OR ([date] = @Original_date)));
-SELECT id, user_id, product_id, quantity, date FROM withdrawal WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[withdrawal] SET [user_id] = @user_id, [product_id] = @product_id, [quantity_withdrawal] = @quantity_withdrawal, [date_withdrawal] = @date_withdrawal WHERE (([id] = @Original_id) AND ((@IsNull_user_id = 1 AND [user_id] IS NULL) OR ([user_id] = @Original_user_id)) AND ((@IsNull_product_id = 1 AND [product_id] IS NULL) OR ([product_id] = @Original_product_id)) AND ((@IsNull_quantity_withdrawal = 1 AND [quantity_withdrawal] IS NULL) OR ([quantity_withdrawal] = @Original_quantity_withdrawal)) AND ((@IsNull_date_withdrawal = 1 AND [date_withdrawal] IS NULL) OR ([date_withdrawal] = @Original_date_withdrawal)));
+SELECT id, user_id, product_id, quantity_withdrawal, date_withdrawal FROM withdrawal WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@product_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "product_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity_withdrawal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity_withdrawal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date_withdrawal", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_withdrawal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_product_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "product_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_product_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "product_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_quantity_withdrawal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity_withdrawal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity_withdrawal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity_withdrawal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_date_withdrawal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_withdrawal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date_withdrawal", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_withdrawal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -7225,7 +7224,8 @@ SELECT id, user_id, product_id, quantity, date FROM withdrawal WHERE (id = @id)"
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, user_id, product_id, quantity, date FROM dbo.withdrawal";
+            this._commandCollection[0].CommandText = "SELECT id, user_id, product_id, quantity_withdrawal, date_withdrawal FROM dbo.wit" +
+                "hdrawal";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7286,7 +7286,7 @@ SELECT id, user_id, product_id, quantity, date FROM withdrawal WHERE (id = @id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<int> Original_product_id, global::System.Nullable<int> Original_quantity, global::System.Nullable<global::System.DateTime> Original_date) {
+        public virtual int Delete(int Original_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<int> Original_product_id, global::System.Nullable<int> Original_quantity_withdrawal, global::System.Nullable<global::System.DateTime> Original_date_withdrawal) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
             if ((Original_user_id.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -7304,17 +7304,17 @@ SELECT id, user_id, product_id, quantity, date FROM withdrawal WHERE (id = @id)"
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_quantity.HasValue == true)) {
+            if ((Original_quantity_withdrawal.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_quantity.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_quantity_withdrawal.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_date.HasValue == true)) {
+            if ((Original_date_withdrawal.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_date.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_date_withdrawal.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
@@ -7340,7 +7340,7 @@ SELECT id, user_id, product_id, quantity, date FROM withdrawal WHERE (id = @id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> user_id, global::System.Nullable<int> product_id, global::System.Nullable<int> quantity, global::System.Nullable<global::System.DateTime> date) {
+        public virtual int Insert(global::System.Nullable<int> user_id, global::System.Nullable<int> product_id, global::System.Nullable<int> quantity_withdrawal, global::System.Nullable<global::System.DateTime> date_withdrawal) {
             if ((user_id.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(user_id.Value));
             }
@@ -7353,14 +7353,14 @@ SELECT id, user_id, product_id, quantity, date FROM withdrawal WHERE (id = @id)"
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((quantity.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(quantity.Value));
+            if ((quantity_withdrawal.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(quantity_withdrawal.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((date.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(date.Value));
+            if ((date_withdrawal.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(date_withdrawal.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -7385,7 +7385,7 @@ SELECT id, user_id, product_id, quantity, date FROM withdrawal WHERE (id = @id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> user_id, global::System.Nullable<int> product_id, global::System.Nullable<int> quantity, global::System.Nullable<global::System.DateTime> date, int Original_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<int> Original_product_id, global::System.Nullable<int> Original_quantity, global::System.Nullable<global::System.DateTime> Original_date, int id) {
+        public virtual int Update(global::System.Nullable<int> user_id, global::System.Nullable<int> product_id, global::System.Nullable<int> quantity_withdrawal, global::System.Nullable<global::System.DateTime> date_withdrawal, int Original_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<int> Original_product_id, global::System.Nullable<int> Original_quantity_withdrawal, global::System.Nullable<global::System.DateTime> Original_date_withdrawal, int id) {
             if ((user_id.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(user_id.Value));
             }
@@ -7398,14 +7398,14 @@ SELECT id, user_id, product_id, quantity, date FROM withdrawal WHERE (id = @id)"
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((quantity.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(quantity.Value));
+            if ((quantity_withdrawal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(quantity_withdrawal.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((date.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(date.Value));
+            if ((date_withdrawal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(date_withdrawal.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -7427,17 +7427,17 @@ SELECT id, user_id, product_id, quantity, date FROM withdrawal WHERE (id = @id)"
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_quantity.HasValue == true)) {
+            if ((Original_quantity_withdrawal.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_quantity.Value));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_quantity_withdrawal.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_date.HasValue == true)) {
+            if ((Original_date_withdrawal.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_date.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_date_withdrawal.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
@@ -7464,8 +7464,8 @@ SELECT id, user_id, product_id, quantity, date FROM withdrawal WHERE (id = @id)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> user_id, global::System.Nullable<int> product_id, global::System.Nullable<int> quantity, global::System.Nullable<global::System.DateTime> date, int Original_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<int> Original_product_id, global::System.Nullable<int> Original_quantity, global::System.Nullable<global::System.DateTime> Original_date) {
-            return this.Update(user_id, product_id, quantity, date, Original_id, Original_user_id, Original_product_id, Original_quantity, Original_date, Original_id);
+        public virtual int Update(global::System.Nullable<int> user_id, global::System.Nullable<int> product_id, global::System.Nullable<int> quantity_withdrawal, global::System.Nullable<global::System.DateTime> date_withdrawal, int Original_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<int> Original_product_id, global::System.Nullable<int> Original_quantity_withdrawal, global::System.Nullable<global::System.DateTime> Original_date_withdrawal) {
+            return this.Update(user_id, product_id, quantity_withdrawal, date_withdrawal, Original_id, Original_user_id, Original_product_id, Original_quantity_withdrawal, Original_date_withdrawal, Original_id);
         }
     }
     
