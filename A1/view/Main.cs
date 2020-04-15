@@ -69,11 +69,14 @@ namespace A1
 
             categoryDAO.insert(category);
             dataGridCategory.DataSource = CategoryDAO.returnDataSource();
+            btnCategoryClear_Click(sender, e);
 
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'a1DataSet.subcategory' table. You can move, or remove it, as needed.
+            this.subcategoryTableAdapter.Fill(this.a1DataSet.subcategory);
             // TODO: This line of code loads data into the 'a1DataSet.withdrawal' table. You can move, or remove it, as needed.
             this.withdrawalTableAdapter.Fill(this.a1DataSet.withdrawal);
             // TODO: This line of code loads data into the 'a1DataSet.entry' table. You can move, or remove it, as needed.
@@ -134,6 +137,37 @@ namespace A1
         private void tabPageSubCategory_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCategoryClear_Click(object sender, EventArgs e)
+        {
+            tbCategoryName.Text = "";
+
+        }
+
+        private void btnSubCategorySave_Click(object sender, EventArgs e)
+        {
+            SubcategoryDAO subcategoryDAO = new SubcategoryDAO();
+            Subcategory subcategory = new Subcategory();
+
+            subcategory.Name = tbSubCategoryName.Text;
+            //SUBCATEGORY CATEGORY - COMBOBOX
+
+            subcategoryDAO.insert(subcategory);
+
+        }
+
+        private void btnProductSave_Click(object sender, EventArgs e)
+        {
+            ProductDAO productDAO = new ProductDAO();
+            Product product = new Product();
+
+            product.Name = tbProductName.Text;
+            product.Label = tbProductLabel.Text;
+            //product.Price = tbProductPrice.Value;
+            //product.QuantityAvailable = tbProductQuantityAvailable.Value;
+
+            productDAO.insert(product);
         }
     }
 }
