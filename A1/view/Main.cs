@@ -21,18 +21,21 @@ namespace A1
         Product product = new Product();
         Subcategory subcategory = new Subcategory();
         Entry entry = new Entry();
+        Withdrawal withdrawal = new Withdrawal();
 
         UserDAO userDAO = new UserDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
         ProductDAO productDAO = new ProductDAO();
         SubcategoryDAO subcategoryDAO = new SubcategoryDAO();
         EntryDAO entryDAO = new EntryDAO();
+        WithdrawalDAO withdrawalDAO = new WithdrawalDAO();
 
         public int idUser;
         public int idCategory;
         public int idProduct;
         public int idSubcategory;
         public int idEntry;
+        public int idWithdrawal;
 
         public Main()
         {
@@ -440,6 +443,118 @@ namespace A1
             tbEntryPrice.Text = "";
             tbEntryQuantity.Text = "";
             dtEntryDate.ResetText();
+        }
+
+        private void btnEntryUpdate_Click(object sender, EventArgs e)
+        {
+            if (entry.Product == null)
+                entry.Product = new Product();
+            if (entry.User == null)
+                entry.User = new User();
+
+            entry.Id = idEntry;
+            entry.Product.Id = (int)cbEntryProduct.SelectedValue;
+            entry.User.Id = (int)cbEntryUser.SelectedValue;
+            entry.Price = float.Parse(tbEntryPrice.Text.Trim());
+            entry.QuantityEntry = int.Parse(tbEntryQuantity.Text.Trim());
+            entry.DateEntry = dtEntryDate.Value;
+
+            entryDAO.update(entry);
+            dataGridEntry.DataSource = EntryDAO.returnDataSource();
+            btnEntryClear_Click(sender, e);
+        }
+
+        private void btnEntryDelete_Click(object sender, EventArgs e)
+        {
+            if (entry.Product == null)
+                entry.Product = new Product();
+            if (entry.User == null)
+                entry.User = new User();
+
+            entry.Id = idEntry;
+            entry.Product.Id = (int)cbEntryProduct.SelectedValue;
+            entry.User.Id = (int)cbEntryUser.SelectedValue;
+            entry.Price = float.Parse(tbEntryPrice.Text.Trim());
+            entry.QuantityEntry = int.Parse(tbEntryQuantity.Text.Trim());
+            entry.DateEntry = dtEntryDate.Value;
+
+            entryDAO.delete(entry);
+            dataGridEntry.DataSource = EntryDAO.returnDataSource();
+            btnEntryClear_Click(sender, e);
+        }
+
+        private void btnWithdrawalSave_Click(object sender, EventArgs e)
+        {
+            if (withdrawal.Product == null)
+                withdrawal.Product = new Product();
+            if (withdrawal.User == null)
+                withdrawal.User = new User();
+
+            withdrawal.Product.Id = (int)cbWithdrawalProduct.SelectedValue;
+            withdrawal.User.Id = (int)cbWithdrawalUser.SelectedValue;
+            withdrawal.QuantityWithdrawal = int.Parse(tbWithdrawalQuantity.Text.Trim());
+            withdrawal.DateWithdrawal = dtWithdrawalDate.Value;
+
+            withdrawalDAO.insert(withdrawal);
+            dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
+            btnWithdrawalClear_Click(sender, e);
+        }
+
+        private void dataGridWithdrawal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idWithdrawal = (int)dataGridWithdrawal.CurrentRow.Cells[0].Value;
+            int idWithdrawalUser = (int)dataGridWithdrawal.CurrentRow.Cells[1].Value;
+            User u = UserDAO.findById(idWithdrawalUser);
+            int idWithdrawalProduct = (int)dataGridWithdrawal.CurrentRow.Cells[2].Value;
+            Product p = ProductDAO.findById(idWithdrawalProduct);
+            cbWithdrawalProduct.Text = p.Name;
+            cbWithdrawalUser.Text = u.Name;
+            tbWithdrawalQuantity.Text = dataGridWithdrawal.CurrentRow.Cells[3].Value.ToString();
+            dtWithdrawalDate.Value = (DateTime)dataGridWithdrawal.CurrentRow.Cells[4].Value;
+        }
+
+        private void btnWithdrawalClear_Click(object sender, EventArgs e)
+        {
+            cbWithdrawalUser.Text = "";
+            cbWithdrawalProduct.Text = "";
+            tbWithdrawalQuantity.Text = "";
+            dtWithdrawalDate.ResetText();
+        }
+
+        private void btnWithdrawalUpdate_Click(object sender, EventArgs e)
+        {
+            if (withdrawal.Product == null)
+                withdrawal.Product = new Product();
+            if (withdrawal.User == null)
+                withdrawal.User = new User();
+
+            withdrawal.Id = idWithdrawal;
+            withdrawal.Product.Id = (int)cbWithdrawalProduct.SelectedValue;
+            withdrawal.User.Id = (int)cbWithdrawalUser.SelectedValue;
+            withdrawal.QuantityWithdrawal = int.Parse(tbWithdrawalQuantity.Text.Trim());
+            withdrawal.DateWithdrawal = dtWithdrawalDate.Value;
+
+            withdrawalDAO.update(withdrawal);
+            dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
+            btnWithdrawalClear_Click(sender, e);
+        }
+
+        private void btnWithdrawalDelete_Click(object sender, EventArgs e)
+        {
+            if (withdrawal.Product == null)
+                withdrawal.Product = new Product();
+            if (withdrawal.User == null)
+                withdrawal.User = new User();
+
+            withdrawal.Id = idWithdrawal;
+            withdrawal.Product.Id = (int)cbWithdrawalProduct.SelectedValue;
+            withdrawal.User.Id = (int)cbWithdrawalUser.SelectedValue;
+            withdrawal.QuantityWithdrawal = int.Parse(tbWithdrawalQuantity.Text.Trim());
+            withdrawal.DateWithdrawal = dtWithdrawalDate.Value;
+
+            withdrawalDAO.delete(withdrawal);
+            dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
+            btnWithdrawalClear_Click(sender, e);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace A1.dao
         public Withdrawal update(Withdrawal withdrawal)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "UPDATE withdrawal set user_id = @user_id, product_id = @product_id, quantity_withdrawal = @quantity_withdrawal, date_withdrawal = @date_withdrawal, id = @id where id = @id";
+            cmd.CommandText = "UPDATE withdrawal set user_id = @user_id, product_id = @product_id, quantity_withdrawal = @quantity_withdrawal, date_withdrawal = @date_withdrawal where id = @id";
             cmd.Parameters.AddWithValue("@id", withdrawal.Id);
             cmd.Parameters.AddWithValue("@user_id", withdrawal.User.Id);
             cmd.Parameters.AddWithValue("@product_id", withdrawal.Product.Id);

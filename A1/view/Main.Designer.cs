@@ -132,7 +132,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPageWithdrawal = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridWithdrawal = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -176,7 +176,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.entryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sysuserBindingSource1)).BeginInit();
             this.tabPageWithdrawal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridWithdrawal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.withdrawalBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1047,6 +1047,7 @@
             this.btnEntryDelete.TabIndex = 51;
             this.btnEntryDelete.Text = "DELETE";
             this.btnEntryDelete.UseVisualStyleBackColor = true;
+            this.btnEntryDelete.Click += new System.EventHandler(this.btnEntryDelete_Click);
             // 
             // btnEntryUpdate
             // 
@@ -1056,6 +1057,7 @@
             this.btnEntryUpdate.TabIndex = 50;
             this.btnEntryUpdate.Text = "UPDATE";
             this.btnEntryUpdate.UseVisualStyleBackColor = true;
+            this.btnEntryUpdate.Click += new System.EventHandler(this.btnEntryUpdate_Click);
             // 
             // btnEntrySave
             // 
@@ -1166,7 +1168,7 @@
             // 
             // tabPageWithdrawal
             // 
-            this.tabPageWithdrawal.Controls.Add(this.dataGridView3);
+            this.tabPageWithdrawal.Controls.Add(this.dataGridWithdrawal);
             this.tabPageWithdrawal.Controls.Add(this.btnWithdrawalClear);
             this.tabPageWithdrawal.Controls.Add(this.btnWithdrawalDelete);
             this.tabPageWithdrawal.Controls.Add(this.btnWithdrawalUpdate);
@@ -1187,24 +1189,25 @@
             this.tabPageWithdrawal.Text = "WITHDRAWAL";
             this.tabPageWithdrawal.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // dataGridWithdrawal
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AutoGenerateColumns = false;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridWithdrawal.AllowUserToAddRows = false;
+            this.dataGridWithdrawal.AllowUserToDeleteRows = false;
+            this.dataGridWithdrawal.AutoGenerateColumns = false;
+            this.dataGridWithdrawal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridWithdrawal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn4,
             this.useridDataGridViewTextBoxColumn1,
             this.productidDataGridViewTextBoxColumn1,
             this.quantitywithdrawalDataGridViewTextBoxColumn,
             this.datewithdrawalDataGridViewTextBoxColumn});
-            this.dataGridView3.DataSource = this.withdrawalBindingSource;
-            this.dataGridView3.Location = new System.Drawing.Point(111, 238);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.Size = new System.Drawing.Size(542, 154);
-            this.dataGridView3.TabIndex = 67;
+            this.dataGridWithdrawal.DataSource = this.withdrawalBindingSource;
+            this.dataGridWithdrawal.Location = new System.Drawing.Point(111, 238);
+            this.dataGridWithdrawal.Name = "dataGridWithdrawal";
+            this.dataGridWithdrawal.ReadOnly = true;
+            this.dataGridWithdrawal.Size = new System.Drawing.Size(542, 154);
+            this.dataGridWithdrawal.TabIndex = 67;
+            this.dataGridWithdrawal.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridWithdrawal_CellDoubleClick);
             // 
             // idDataGridViewTextBoxColumn4
             // 
@@ -1254,6 +1257,7 @@
             this.btnWithdrawalClear.TabIndex = 66;
             this.btnWithdrawalClear.Text = "CLEAR";
             this.btnWithdrawalClear.UseVisualStyleBackColor = true;
+            this.btnWithdrawalClear.Click += new System.EventHandler(this.btnWithdrawalClear_Click);
             // 
             // btnWithdrawalDelete
             // 
@@ -1263,6 +1267,7 @@
             this.btnWithdrawalDelete.TabIndex = 65;
             this.btnWithdrawalDelete.Text = "DELETE";
             this.btnWithdrawalDelete.UseVisualStyleBackColor = true;
+            this.btnWithdrawalDelete.Click += new System.EventHandler(this.btnWithdrawalDelete_Click);
             // 
             // btnWithdrawalUpdate
             // 
@@ -1272,6 +1277,7 @@
             this.btnWithdrawalUpdate.TabIndex = 64;
             this.btnWithdrawalUpdate.Text = "UPDATE";
             this.btnWithdrawalUpdate.UseVisualStyleBackColor = true;
+            this.btnWithdrawalUpdate.Click += new System.EventHandler(this.btnWithdrawalUpdate_Click);
             // 
             // btnWithdrawalSave
             // 
@@ -1281,6 +1287,7 @@
             this.btnWithdrawalSave.TabIndex = 63;
             this.btnWithdrawalSave.Text = "SAVE";
             this.btnWithdrawalSave.UseVisualStyleBackColor = true;
+            this.btnWithdrawalSave.Click += new System.EventHandler(this.btnWithdrawalSave_Click);
             // 
             // label22
             // 
@@ -1317,7 +1324,9 @@
             // 
             // cbWithdrawalUser
             // 
-            this.cbWithdrawalUser.DisplayMember = "id";
+            this.cbWithdrawalUser.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sysuserBindingSource, "id", true));
+            this.cbWithdrawalUser.DataSource = this.sysuserBindingSource1;
+            this.cbWithdrawalUser.DisplayMember = "name";
             this.cbWithdrawalUser.FormattingEnabled = true;
             this.cbWithdrawalUser.Location = new System.Drawing.Point(294, 45);
             this.cbWithdrawalUser.Name = "cbWithdrawalUser";
@@ -1327,7 +1336,9 @@
             // 
             // cbWithdrawalProduct
             // 
-            this.cbWithdrawalProduct.DisplayMember = "id";
+            this.cbWithdrawalProduct.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.productBindingSource, "id", true));
+            this.cbWithdrawalProduct.DataSource = this.productBindingSource;
+            this.cbWithdrawalProduct.DisplayMember = "name";
             this.cbWithdrawalProduct.FormattingEnabled = true;
             this.cbWithdrawalProduct.Location = new System.Drawing.Point(15, 45);
             this.cbWithdrawalProduct.Name = "cbWithdrawalProduct";
@@ -1414,7 +1425,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sysuserBindingSource1)).EndInit();
             this.tabPageWithdrawal.ResumeLayout(false);
             this.tabPageWithdrawal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridWithdrawal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.withdrawalBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1504,7 +1515,7 @@
         private System.Windows.Forms.ComboBox cbWithdrawalProduct;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridWithdrawal;
         private System.Windows.Forms.DataGridView dataGridSubcategory;
         private a1DataSet a1DataSet;
         private System.Windows.Forms.BindingSource sysuserBindingSource;

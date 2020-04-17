@@ -29,7 +29,7 @@ namespace A1.dao
         public Entry update(Entry entry)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "UPDATE entry set product_id = @product_id, user_id = @user_id, price = @price, date_entry = @date_entry, quantity_entry = @quantity_entry, id = @id where id = @id";
+            cmd.CommandText = "UPDATE entry set product_id = @product_id, user_id = @user_id, price = @price, date_entry = @date_entry, quantity_entry = @quantity_entry where id = @id";
             cmd.Parameters.AddWithValue("@id", entry.Id);
             cmd.Parameters.AddWithValue("@product_id", entry.Product.Id);
             cmd.Parameters.AddWithValue("@user_id", entry.User.Id);
