@@ -14,9 +14,9 @@ namespace A1.model
         private String email;
         private String password;
         private String telephone;
-        private TypeUser typeUser;
+        private String typeUser;
 
-        public TypeUser TypeUser { get => typeUser; set => typeUser = value; }
+        public string TypeUser { get => typeUser; set => typeUser = value; }
         public string Telephone { get => telephone; set => telephone = value; }
         public string Password { get => password; set => password = value; }
         public string Email { get => email; set => email = value; }

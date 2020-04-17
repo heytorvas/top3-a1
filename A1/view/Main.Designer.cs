@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ENTRY = new System.Windows.Forms.TabControl();
             this.tabPageUser = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridUser = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cpfDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,7 +40,7 @@
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telephoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeuserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sysuserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.a1DataSet = new A1.a1DataSet();
             this.cbUserType = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -70,6 +70,11 @@
             this.btnCategoryUpdate = new System.Windows.Forms.Button();
             this.btnCategorySave = new System.Windows.Forms.Button();
             this.tabPageSubCategory = new System.Windows.Forms.TabPage();
+            this.dataGridSubcategory = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.category_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subcategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbSubcategoryCategory = new System.Windows.Forms.ComboBox();
             this.btnSubCategorySave = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -79,10 +84,18 @@
             this.btnSubCategoryDelete = new System.Windows.Forms.Button();
             this.btnSubCategoryUpdate = new System.Windows.Forms.Button();
             this.tabPageProduct = new System.Windows.Forms.TabPage();
+            this.dataGridProduct = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityavailableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label14 = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxSubcategory = new System.Windows.Forms.CheckedListBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnProductClear = new System.Windows.Forms.Button();
             this.btnProductDelete = new System.Windows.Forms.Button();
             this.btnProductUpdate = new System.Windows.Forms.Button();
             this.btnProductSave = new System.Windows.Forms.Button();
@@ -96,7 +109,7 @@
             this.tbProductName = new System.Windows.Forms.TextBox();
             this.tabPageEntry = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,13 +127,13 @@
             this.tbEntryPrice = new System.Windows.Forms.TextBox();
             this.tbEntryQuantity = new System.Windows.Forms.TextBox();
             this.cbEntryUser = new System.Windows.Forms.ComboBox();
+            this.sysuserBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.cbEntryProduct = new System.Windows.Forms.ComboBox();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPageWithdrawal = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantitywithdrawalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -138,36 +151,33 @@
             this.cbWithdrawalProduct = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.userTableAdapter = new A1.a1DataSetTableAdapters.userTableAdapter();
+            this.sysuserTableAdapter = new A1.a1DataSetTableAdapters.sysuserTableAdapter();
             this.categoryTableAdapter = new A1.a1DataSetTableAdapters.categoryTableAdapter();
-            this.productTableAdapter = new A1.a1DataSetTableAdapters.productTableAdapter();
             this.entryTableAdapter = new A1.a1DataSetTableAdapters.entryTableAdapter();
             this.withdrawalTableAdapter = new A1.a1DataSetTableAdapters.withdrawalTableAdapter();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.subcategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.subcategoryTableAdapter = new A1.a1DataSetTableAdapters.subcategoryTableAdapter();
-            this.idDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productTableAdapter = new A1.a1DataSetTableAdapters.productTableAdapter();
             this.ENTRY.SuspendLayout();
             this.tabPageUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sysuserBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.a1DataSet)).BeginInit();
             this.tabPageCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.tabPageSubCategory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSubcategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.subcategoryBindingSource)).BeginInit();
             this.tabPageProduct.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.tabPageEntry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.entryBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sysuserBindingSource1)).BeginInit();
             this.tabPageWithdrawal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.withdrawalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.subcategoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -195,7 +205,7 @@
             // 
             // tabPageUser
             // 
-            this.tabPageUser.Controls.Add(this.dataGridView1);
+            this.tabPageUser.Controls.Add(this.dataGridUser);
             this.tabPageUser.Controls.Add(this.cbUserType);
             this.tabPageUser.Controls.Add(this.label8);
             this.tabPageUser.Controls.Add(this.btnUserClear);
@@ -219,14 +229,14 @@
             this.tabPageUser.TabIndex = 0;
             this.tabPageUser.Text = "USER";
             this.tabPageUser.UseVisualStyleBackColor = true;
-            this.tabPageUser.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // dataGridView1
+            // dataGridUser
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridUser.AllowUserToAddRows = false;
+            this.dataGridUser.AllowUserToDeleteRows = false;
+            this.dataGridUser.AutoGenerateColumns = false;
+            this.dataGridUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.cpfDataGridViewTextBoxColumn,
@@ -234,11 +244,13 @@
             this.passwordDataGridViewTextBoxColumn,
             this.telephoneDataGridViewTextBoxColumn,
             this.typeuserDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.userBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 209);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(696, 254);
-            this.dataGridView1.TabIndex = 23;
+            this.dataGridUser.DataSource = this.sysuserBindingSource;
+            this.dataGridUser.Location = new System.Drawing.Point(22, 209);
+            this.dataGridUser.Name = "dataGridUser";
+            this.dataGridUser.ReadOnly = true;
+            this.dataGridUser.Size = new System.Drawing.Size(696, 254);
+            this.dataGridUser.TabIndex = 23;
+            this.dataGridUser.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridUser_CellDoubleClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -252,41 +264,47 @@
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // cpfDataGridViewTextBoxColumn
             // 
             this.cpfDataGridViewTextBoxColumn.DataPropertyName = "cpf";
             this.cpfDataGridViewTextBoxColumn.HeaderText = "cpf";
             this.cpfDataGridViewTextBoxColumn.Name = "cpfDataGridViewTextBoxColumn";
+            this.cpfDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // emailDataGridViewTextBoxColumn
             // 
             this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
             this.emailDataGridViewTextBoxColumn.HeaderText = "email";
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // passwordDataGridViewTextBoxColumn
             // 
             this.passwordDataGridViewTextBoxColumn.DataPropertyName = "password";
             this.passwordDataGridViewTextBoxColumn.HeaderText = "password";
             this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // telephoneDataGridViewTextBoxColumn
             // 
             this.telephoneDataGridViewTextBoxColumn.DataPropertyName = "telephone";
             this.telephoneDataGridViewTextBoxColumn.HeaderText = "telephone";
             this.telephoneDataGridViewTextBoxColumn.Name = "telephoneDataGridViewTextBoxColumn";
+            this.telephoneDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // typeuserDataGridViewTextBoxColumn
             // 
             this.typeuserDataGridViewTextBoxColumn.DataPropertyName = "type_user";
             this.typeuserDataGridViewTextBoxColumn.HeaderText = "type_user";
             this.typeuserDataGridViewTextBoxColumn.Name = "typeuserDataGridViewTextBoxColumn";
+            this.typeuserDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // userBindingSource
+            // sysuserBindingSource
             // 
-            this.userBindingSource.DataMember = "user";
-            this.userBindingSource.DataSource = this.a1DataSet;
+            this.sysuserBindingSource.DataMember = "sysuser";
+            this.sysuserBindingSource.DataSource = this.a1DataSet;
             // 
             // a1DataSet
             // 
@@ -295,7 +313,6 @@
             // 
             // cbUserType
             // 
-            this.cbUserType.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.userBindingSource, "type_user", true));
             this.cbUserType.FormattingEnabled = true;
             this.cbUserType.Items.AddRange(new object[] {
             "Employee",
@@ -304,6 +321,7 @@
             this.cbUserType.Name = "cbUserType";
             this.cbUserType.Size = new System.Drawing.Size(240, 21);
             this.cbUserType.TabIndex = 22;
+            this.cbUserType.SelectedIndexChanged += new System.EventHandler(this.cbUserType_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -341,6 +359,7 @@
             this.btnUserUpdate.TabIndex = 18;
             this.btnUserUpdate.Text = "UPDATE";
             this.btnUserUpdate.UseVisualStyleBackColor = true;
+            this.btnUserUpdate.Click += new System.EventHandler(this.btnUserUpdate_Click_1);
             // 
             // btnUserSave
             // 
@@ -387,7 +406,6 @@
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Email:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -405,7 +423,6 @@
             this.tbUserCPF.Name = "tbUserCPF";
             this.tbUserCPF.Size = new System.Drawing.Size(240, 28);
             this.tbUserCPF.TabIndex = 10;
-            this.tbUserCPF.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // tbUserEmail
             // 
@@ -423,7 +440,6 @@
             this.tbUserPassword.PasswordChar = '*';
             this.tbUserPassword.Size = new System.Drawing.Size(240, 28);
             this.tbUserPassword.TabIndex = 8;
-            this.tbUserPassword.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // tbUserTelephone
             // 
@@ -440,7 +456,6 @@
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(240, 28);
             this.tbUserName.TabIndex = 6;
-            this.tbUserName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // tabPageCategory
             // 
@@ -488,7 +503,6 @@
             this.nameDataGridViewTextBoxColumn1.HeaderText = "name";
             this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
             this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn1.Width = 200;
             // 
             // categoryBindingSource
             // 
@@ -511,7 +525,6 @@
             this.tbCategoryName.Name = "tbCategoryName";
             this.tbCategoryName.Size = new System.Drawing.Size(240, 28);
             this.tbCategoryName.TabIndex = 25;
-            this.tbCategoryName.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // btnCategoryClear
             // 
@@ -553,7 +566,7 @@
             // 
             // tabPageSubCategory
             // 
-            this.tabPageSubCategory.Controls.Add(this.dataGridView4);
+            this.tabPageSubCategory.Controls.Add(this.dataGridSubcategory);
             this.tabPageSubCategory.Controls.Add(this.cbSubcategoryCategory);
             this.tabPageSubCategory.Controls.Add(this.btnSubCategorySave);
             this.tabPageSubCategory.Controls.Add(this.label11);
@@ -569,7 +582,48 @@
             this.tabPageSubCategory.TabIndex = 2;
             this.tabPageSubCategory.Text = "SUBCATEGORY";
             this.tabPageSubCategory.UseVisualStyleBackColor = true;
-            this.tabPageSubCategory.Click += new System.EventHandler(this.tabPageSubCategory_Click);
+            // 
+            // dataGridSubcategory
+            // 
+            this.dataGridSubcategory.AllowUserToAddRows = false;
+            this.dataGridSubcategory.AutoGenerateColumns = false;
+            this.dataGridSubcategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSubcategory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn2,
+            this.nameDataGridViewTextBoxColumn2,
+            this.category_id});
+            this.dataGridSubcategory.DataSource = this.subcategoryBindingSource;
+            this.dataGridSubcategory.Location = new System.Drawing.Point(214, 202);
+            this.dataGridSubcategory.Name = "dataGridSubcategory";
+            this.dataGridSubcategory.ReadOnly = true;
+            this.dataGridSubcategory.Size = new System.Drawing.Size(344, 150);
+            this.dataGridSubcategory.TabIndex = 38;
+            // 
+            // idDataGridViewTextBoxColumn2
+            // 
+            this.idDataGridViewTextBoxColumn2.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn2.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
+            this.idDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn2
+            // 
+            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn2.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
+            this.nameDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // category_id
+            // 
+            this.category_id.DataPropertyName = "category_id";
+            this.category_id.HeaderText = "category_id";
+            this.category_id.Name = "category_id";
+            this.category_id.ReadOnly = true;
+            // 
+            // subcategoryBindingSource
+            // 
+            this.subcategoryBindingSource.DataMember = "subcategory";
+            this.subcategoryBindingSource.DataSource = this.a1DataSet;
             // 
             // cbSubcategoryCategory
             // 
@@ -601,7 +655,6 @@
             this.label11.Size = new System.Drawing.Size(52, 13);
             this.label11.TabIndex = 34;
             this.label11.Text = "Category:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label10
             // 
@@ -628,6 +681,7 @@
             this.btnSubCategoryClear.TabIndex = 30;
             this.btnSubCategoryClear.Text = "CLEAR";
             this.btnSubCategoryClear.UseVisualStyleBackColor = true;
+            this.btnSubCategoryClear.Click += new System.EventHandler(this.btnSubCategoryClear_Click);
             // 
             // btnSubCategoryDelete
             // 
@@ -649,10 +703,11 @@
             // 
             // tabPageProduct
             // 
+            this.tabPageProduct.Controls.Add(this.dataGridProduct);
             this.tabPageProduct.Controls.Add(this.label14);
-            this.tabPageProduct.Controls.Add(this.checkedListBox1);
+            this.tabPageProduct.Controls.Add(this.checkedListBoxSubcategory);
             this.tabPageProduct.Controls.Add(this.label13);
-            this.tabPageProduct.Controls.Add(this.button1);
+            this.tabPageProduct.Controls.Add(this.btnProductClear);
             this.tabPageProduct.Controls.Add(this.btnProductDelete);
             this.tabPageProduct.Controls.Add(this.btnProductUpdate);
             this.tabPageProduct.Controls.Add(this.btnProductSave);
@@ -672,6 +727,73 @@
             this.tabPageProduct.Text = "PRODUCT";
             this.tabPageProduct.UseVisualStyleBackColor = true;
             // 
+            // dataGridProduct
+            // 
+            this.dataGridProduct.AllowUserToAddRows = false;
+            this.dataGridProduct.AllowUserToDeleteRows = false;
+            this.dataGridProduct.AutoGenerateColumns = false;
+            this.dataGridProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn5,
+            this.imageidDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn3,
+            this.labelDataGridViewTextBoxColumn,
+            this.quantityavailableDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn1});
+            this.dataGridProduct.DataSource = this.productBindingSource;
+            this.dataGridProduct.Location = new System.Drawing.Point(74, 246);
+            this.dataGridProduct.Name = "dataGridProduct";
+            this.dataGridProduct.ReadOnly = true;
+            this.dataGridProduct.Size = new System.Drawing.Size(648, 150);
+            this.dataGridProduct.TabIndex = 41;
+            // 
+            // idDataGridViewTextBoxColumn5
+            // 
+            this.idDataGridViewTextBoxColumn5.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn5.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn5.Name = "idDataGridViewTextBoxColumn5";
+            this.idDataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // imageidDataGridViewTextBoxColumn
+            // 
+            this.imageidDataGridViewTextBoxColumn.DataPropertyName = "image_id";
+            this.imageidDataGridViewTextBoxColumn.HeaderText = "image_id";
+            this.imageidDataGridViewTextBoxColumn.Name = "imageidDataGridViewTextBoxColumn";
+            this.imageidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn3
+            // 
+            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn3.HeaderText = "name";
+            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
+            this.nameDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // labelDataGridViewTextBoxColumn
+            // 
+            this.labelDataGridViewTextBoxColumn.DataPropertyName = "label";
+            this.labelDataGridViewTextBoxColumn.HeaderText = "label";
+            this.labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
+            this.labelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityavailableDataGridViewTextBoxColumn
+            // 
+            this.quantityavailableDataGridViewTextBoxColumn.DataPropertyName = "quantity_available";
+            this.quantityavailableDataGridViewTextBoxColumn.HeaderText = "quantity_available";
+            this.quantityavailableDataGridViewTextBoxColumn.Name = "quantityavailableDataGridViewTextBoxColumn";
+            this.quantityavailableDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn1
+            // 
+            this.priceDataGridViewTextBoxColumn1.DataPropertyName = "price";
+            this.priceDataGridViewTextBoxColumn1.HeaderText = "price";
+            this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
+            this.priceDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataMember = "product";
+            this.productBindingSource.DataSource = this.a1DataSet;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -681,13 +803,13 @@
             this.label14.TabIndex = 40;
             this.label14.Text = "Sub Category:";
             // 
-            // checkedListBox1
+            // checkedListBoxSubcategory
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(26, 143);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(129, 49);
-            this.checkedListBox1.TabIndex = 39;
+            this.checkedListBoxSubcategory.FormattingEnabled = true;
+            this.checkedListBoxSubcategory.Location = new System.Drawing.Point(26, 143);
+            this.checkedListBoxSubcategory.Name = "checkedListBoxSubcategory";
+            this.checkedListBoxSubcategory.Size = new System.Drawing.Size(129, 94);
+            this.checkedListBoxSubcategory.TabIndex = 39;
             // 
             // label13
             // 
@@ -698,14 +820,15 @@
             this.label13.TabIndex = 38;
             this.label13.Text = "Image:";
             // 
-            // button1
+            // btnProductClear
             // 
-            this.button1.Location = new System.Drawing.Point(657, 148);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "CLEAR";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnProductClear.Location = new System.Drawing.Point(657, 148);
+            this.btnProductClear.Name = "btnProductClear";
+            this.btnProductClear.Size = new System.Drawing.Size(75, 23);
+            this.btnProductClear.TabIndex = 37;
+            this.btnProductClear.Text = "CLEAR";
+            this.btnProductClear.UseVisualStyleBackColor = true;
+            this.btnProductClear.Click += new System.EventHandler(this.btnProductClear_Click);
             // 
             // btnProductDelete
             // 
@@ -835,7 +958,7 @@
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn2,
+            this.idDataGridViewTextBoxColumn3,
             this.productidDataGridViewTextBoxColumn,
             this.useridDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
@@ -848,12 +971,12 @@
             this.dataGridView2.Size = new System.Drawing.Size(640, 150);
             this.dataGridView2.TabIndex = 53;
             // 
-            // idDataGridViewTextBoxColumn2
+            // idDataGridViewTextBoxColumn3
             // 
-            this.idDataGridViewTextBoxColumn2.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn2.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
-            this.idDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn3.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn3.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn3.Name = "idDataGridViewTextBoxColumn3";
+            this.idDataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // productidDataGridViewTextBoxColumn
             // 
@@ -955,7 +1078,6 @@
             this.label17.Size = new System.Drawing.Size(76, 13);
             this.label17.TabIndex = 46;
             this.label17.Text = "Quantity Entry:";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label20
             // 
@@ -984,8 +1106,8 @@
             // 
             // cbEntryUser
             // 
-            this.cbEntryUser.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.userBindingSource, "id", true));
-            this.cbEntryUser.DataSource = this.userBindingSource;
+            this.cbEntryUser.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sysuserBindingSource, "id", true));
+            this.cbEntryUser.DataSource = this.sysuserBindingSource1;
             this.cbEntryUser.DisplayMember = "name";
             this.cbEntryUser.FormattingEnabled = true;
             this.cbEntryUser.Location = new System.Drawing.Point(296, 41);
@@ -993,6 +1115,11 @@
             this.cbEntryUser.Size = new System.Drawing.Size(121, 21);
             this.cbEntryUser.TabIndex = 42;
             this.cbEntryUser.ValueMember = "id";
+            // 
+            // sysuserBindingSource1
+            // 
+            this.sysuserBindingSource1.DataMember = "sysuser";
+            this.sysuserBindingSource1.DataSource = this.a1DataSet;
             // 
             // cbEntryProduct
             // 
@@ -1006,11 +1133,6 @@
             this.cbEntryProduct.TabIndex = 41;
             this.cbEntryProduct.ValueMember = "id";
             // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataMember = "product";
-            this.productBindingSource.DataSource = this.a1DataSet;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -1019,7 +1141,6 @@
             this.label7.Size = new System.Drawing.Size(32, 13);
             this.label7.TabIndex = 40;
             this.label7.Text = "User:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label12
             // 
@@ -1029,7 +1150,6 @@
             this.label12.Size = new System.Drawing.Size(47, 13);
             this.label12.TabIndex = 39;
             this.label12.Text = "Product:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // tabPageWithdrawal
             // 
@@ -1061,24 +1181,24 @@
             this.dataGridView3.AutoGenerateColumns = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn3,
+            this.idDataGridViewTextBoxColumn4,
             this.useridDataGridViewTextBoxColumn1,
             this.productidDataGridViewTextBoxColumn1,
             this.quantitywithdrawalDataGridViewTextBoxColumn,
             this.datewithdrawalDataGridViewTextBoxColumn});
             this.dataGridView3.DataSource = this.withdrawalBindingSource;
-            this.dataGridView3.Location = new System.Drawing.Point(96, 288);
+            this.dataGridView3.Location = new System.Drawing.Point(111, 238);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.Size = new System.Drawing.Size(543, 116);
+            this.dataGridView3.Size = new System.Drawing.Size(542, 154);
             this.dataGridView3.TabIndex = 67;
             // 
-            // idDataGridViewTextBoxColumn3
+            // idDataGridViewTextBoxColumn4
             // 
-            this.idDataGridViewTextBoxColumn3.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn3.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn3.Name = "idDataGridViewTextBoxColumn3";
-            this.idDataGridViewTextBoxColumn3.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn4.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn4.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn4.Name = "idDataGridViewTextBoxColumn4";
+            this.idDataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // useridDataGridViewTextBoxColumn1
             // 
@@ -1115,7 +1235,7 @@
             // 
             // btnWithdrawalClear
             // 
-            this.btnWithdrawalClear.Location = new System.Drawing.Point(625, 156);
+            this.btnWithdrawalClear.Location = new System.Drawing.Point(659, 81);
             this.btnWithdrawalClear.Name = "btnWithdrawalClear";
             this.btnWithdrawalClear.Size = new System.Drawing.Size(75, 23);
             this.btnWithdrawalClear.TabIndex = 66;
@@ -1124,7 +1244,7 @@
             // 
             // btnWithdrawalDelete
             // 
-            this.btnWithdrawalDelete.Location = new System.Drawing.Point(625, 107);
+            this.btnWithdrawalDelete.Location = new System.Drawing.Point(659, 43);
             this.btnWithdrawalDelete.Name = "btnWithdrawalDelete";
             this.btnWithdrawalDelete.Size = new System.Drawing.Size(75, 23);
             this.btnWithdrawalDelete.TabIndex = 65;
@@ -1133,7 +1253,7 @@
             // 
             // btnWithdrawalUpdate
             // 
-            this.btnWithdrawalUpdate.Location = new System.Drawing.Point(625, 62);
+            this.btnWithdrawalUpdate.Location = new System.Drawing.Point(578, 81);
             this.btnWithdrawalUpdate.Name = "btnWithdrawalUpdate";
             this.btnWithdrawalUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnWithdrawalUpdate.TabIndex = 64;
@@ -1142,7 +1262,7 @@
             // 
             // btnWithdrawalSave
             // 
-            this.btnWithdrawalSave.Location = new System.Drawing.Point(625, 24);
+            this.btnWithdrawalSave.Location = new System.Drawing.Point(578, 43);
             this.btnWithdrawalSave.Name = "btnWithdrawalSave";
             this.btnWithdrawalSave.Size = new System.Drawing.Size(75, 23);
             this.btnWithdrawalSave.TabIndex = 63;
@@ -1152,7 +1272,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(23, 93);
+            this.label22.Location = new System.Drawing.Point(12, 86);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(60, 13);
             this.label22.TabIndex = 62;
@@ -1160,7 +1280,7 @@
             // 
             // dtWithdrawalDate
             // 
-            this.dtWithdrawalDate.Location = new System.Drawing.Point(26, 109);
+            this.dtWithdrawalDate.Location = new System.Drawing.Point(15, 102);
             this.dtWithdrawalDate.Name = "dtWithdrawalDate";
             this.dtWithdrawalDate.Size = new System.Drawing.Size(200, 20);
             this.dtWithdrawalDate.TabIndex = 61;
@@ -1168,7 +1288,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(302, 93);
+            this.label23.Location = new System.Drawing.Point(291, 86);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(76, 13);
             this.label23.TabIndex = 60;
@@ -1176,7 +1296,7 @@
             // 
             // tbWithdrawalQuantity
             // 
-            this.tbWithdrawalQuantity.Location = new System.Drawing.Point(305, 109);
+            this.tbWithdrawalQuantity.Location = new System.Drawing.Point(294, 102);
             this.tbWithdrawalQuantity.Multiline = true;
             this.tbWithdrawalQuantity.Name = "tbWithdrawalQuantity";
             this.tbWithdrawalQuantity.Size = new System.Drawing.Size(240, 28);
@@ -1184,11 +1304,9 @@
             // 
             // cbWithdrawalUser
             // 
-            this.cbWithdrawalUser.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.userBindingSource, "id", true));
-            this.cbWithdrawalUser.DataSource = this.userBindingSource;
-            this.cbWithdrawalUser.DisplayMember = "name";
+            this.cbWithdrawalUser.DisplayMember = "id";
             this.cbWithdrawalUser.FormattingEnabled = true;
-            this.cbWithdrawalUser.Location = new System.Drawing.Point(305, 52);
+            this.cbWithdrawalUser.Location = new System.Drawing.Point(294, 45);
             this.cbWithdrawalUser.Name = "cbWithdrawalUser";
             this.cbWithdrawalUser.Size = new System.Drawing.Size(121, 21);
             this.cbWithdrawalUser.TabIndex = 56;
@@ -1196,11 +1314,9 @@
             // 
             // cbWithdrawalProduct
             // 
-            this.cbWithdrawalProduct.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.productBindingSource, "id", true));
-            this.cbWithdrawalProduct.DataSource = this.productBindingSource;
-            this.cbWithdrawalProduct.DisplayMember = "name";
+            this.cbWithdrawalProduct.DisplayMember = "id";
             this.cbWithdrawalProduct.FormattingEnabled = true;
-            this.cbWithdrawalProduct.Location = new System.Drawing.Point(26, 52);
+            this.cbWithdrawalProduct.Location = new System.Drawing.Point(15, 45);
             this.cbWithdrawalProduct.Name = "cbWithdrawalProduct";
             this.cbWithdrawalProduct.Size = new System.Drawing.Size(121, 21);
             this.cbWithdrawalProduct.TabIndex = 55;
@@ -1209,7 +1325,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(302, 24);
+            this.label25.Location = new System.Drawing.Point(291, 17);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(32, 13);
             this.label25.TabIndex = 54;
@@ -1218,23 +1334,19 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(24, 24);
+            this.label26.Location = new System.Drawing.Point(13, 17);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(47, 13);
             this.label26.TabIndex = 53;
             this.label26.Text = "Product:";
             // 
-            // userTableAdapter
+            // sysuserTableAdapter
             // 
-            this.userTableAdapter.ClearBeforeFill = true;
+            this.sysuserTableAdapter.ClearBeforeFill = true;
             // 
             // categoryTableAdapter
             // 
             this.categoryTableAdapter.ClearBeforeFill = true;
-            // 
-            // productTableAdapter
-            // 
-            this.productTableAdapter.ClearBeforeFill = true;
             // 
             // entryTableAdapter
             // 
@@ -1244,52 +1356,13 @@
             // 
             this.withdrawalTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridView4
-            // 
-            this.dataGridView4.AllowUserToAddRows = false;
-            this.dataGridView4.AllowUserToDeleteRows = false;
-            this.dataGridView4.AutoGenerateColumns = false;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn4,
-            this.nameDataGridViewTextBoxColumn2,
-            this.categoryidDataGridViewTextBoxColumn});
-            this.dataGridView4.DataSource = this.subcategoryBindingSource;
-            this.dataGridView4.Location = new System.Drawing.Point(214, 202);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.ReadOnly = true;
-            this.dataGridView4.Size = new System.Drawing.Size(344, 150);
-            this.dataGridView4.TabIndex = 38;
-            // 
-            // subcategoryBindingSource
-            // 
-            this.subcategoryBindingSource.DataMember = "subcategory";
-            this.subcategoryBindingSource.DataSource = this.a1DataSet;
-            // 
             // subcategoryTableAdapter
             // 
             this.subcategoryTableAdapter.ClearBeforeFill = true;
             // 
-            // idDataGridViewTextBoxColumn4
+            // productTableAdapter
             // 
-            this.idDataGridViewTextBoxColumn4.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn4.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn4.Name = "idDataGridViewTextBoxColumn4";
-            this.idDataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn2
-            // 
-            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn2.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
-            this.nameDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // categoryidDataGridViewTextBoxColumn
-            // 
-            this.categoryidDataGridViewTextBoxColumn.DataPropertyName = "category_id";
-            this.categoryidDataGridViewTextBoxColumn.HeaderText = "category_id";
-            this.categoryidDataGridViewTextBoxColumn.Name = "categoryidDataGridViewTextBoxColumn";
-            this.categoryidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productTableAdapter.ClearBeforeFill = true;
             // 
             // Main
             // 
@@ -1306,8 +1379,8 @@
             this.ENTRY.ResumeLayout(false);
             this.tabPageUser.ResumeLayout(false);
             this.tabPageUser.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sysuserBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.a1DataSet)).EndInit();
             this.tabPageCategory.ResumeLayout(false);
             this.tabPageCategory.PerformLayout();
@@ -1315,19 +1388,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             this.tabPageSubCategory.ResumeLayout(false);
             this.tabPageSubCategory.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSubcategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.subcategoryBindingSource)).EndInit();
             this.tabPageProduct.ResumeLayout(false);
             this.tabPageProduct.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.tabPageEntry.ResumeLayout(false);
             this.tabPageEntry.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.entryBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sysuserBindingSource1)).EndInit();
             this.tabPageWithdrawal.ResumeLayout(false);
             this.tabPageWithdrawal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.withdrawalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.subcategoryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1367,7 +1442,7 @@
         private System.Windows.Forms.Button btnSubCategoryDelete;
         private System.Windows.Forms.Button btnSubCategoryUpdate;
         private System.Windows.Forms.TabPage tabPageProduct;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnProductClear;
         private System.Windows.Forms.Button btnProductDelete;
         private System.Windows.Forms.Button btnProductUpdate;
         private System.Windows.Forms.Button btnProductSave;
@@ -1381,25 +1456,11 @@
         private System.Windows.Forms.TextBox tbProductName;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBoxSubcategory;
         private System.Windows.Forms.Button btnSubCategorySave;
         private System.Windows.Forms.ComboBox cbUserType;
-        private a1DataSet a1DataSet;
-        private System.Windows.Forms.BindingSource userBindingSource;
-        private a1DataSetTableAdapters.userTableAdapter userTableAdapter;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cpfDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telephoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeuserDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridUser;
         private System.Windows.Forms.DataGridView dataGridCategory;
-        private System.Windows.Forms.BindingSource categoryBindingSource;
-        private a1DataSetTableAdapters.categoryTableAdapter categoryTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.ComboBox cbSubcategoryCategory;
         private System.Windows.Forms.TabPage tabPageEntry;
         private System.Windows.Forms.Label label7;
@@ -1417,8 +1478,6 @@
         private System.Windows.Forms.Button btnEntryDelete;
         private System.Windows.Forms.Button btnEntryUpdate;
         private System.Windows.Forms.Button btnEntrySave;
-        private System.Windows.Forms.BindingSource productBindingSource;
-        private a1DataSetTableAdapters.productTableAdapter productTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button btnWithdrawalClear;
         private System.Windows.Forms.Button btnWithdrawalDelete;
@@ -1432,27 +1491,51 @@
         private System.Windows.Forms.ComboBox cbWithdrawalProduct;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridSubcategory;
+        private a1DataSet a1DataSet;
+        private System.Windows.Forms.BindingSource sysuserBindingSource;
+        private a1DataSetTableAdapters.sysuserTableAdapter sysuserTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cpfDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telephoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeuserDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource categoryBindingSource;
+        private a1DataSetTableAdapters.categoryTableAdapter categoryTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
         private System.Windows.Forms.BindingSource entryBindingSource;
         private a1DataSetTableAdapters.entryTableAdapter entryTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn productidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateentryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityentryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.BindingSource withdrawalBindingSource;
         private a1DataSetTableAdapters.withdrawalTableAdapter withdrawalTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn productidDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantitywithdrawalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datewithdrawalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.BindingSource subcategoryBindingSource;
         private a1DataSetTableAdapters.subcategoryTableAdapter subcategoryTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridProduct;
+        private System.Windows.Forms.BindingSource productBindingSource;
+        private a1DataSetTableAdapters.productTableAdapter productTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imageidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn labelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityavailableDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource sysuserBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn category_id;
     }
 }

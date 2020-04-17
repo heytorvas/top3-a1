@@ -12,6 +12,20 @@ namespace A1.dao
 {
     public class ProductDAO
     {
+        public int insertReturned(Product product)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "INSERT INTO product(name, label, quantity_available, price) output INSERTED.id values (@name, @label, @quantity_available, @price)";
+            //cmd.Parameters.AddWithValue("@image_id", product.Image.Id);
+            cmd.Parameters.AddWithValue("@name", product.Name);
+            cmd.Parameters.AddWithValue("@label", product.Label);
+            cmd.Parameters.AddWithValue("@quantity_available", product.QuantityAvailable);
+            cmd.Parameters.AddWithValue("@price", product.Price);
+
+            int idReturned = Connection.returnIdAfterInsert(cmd);
+            return idReturned;
+        }
+
         public Product insert(Product product)
         {
             SqlCommand cmd = new SqlCommand();
@@ -23,14 +37,6 @@ namespace A1.dao
             cmd.Parameters.AddWithValue("@price", product.Price);
 
             if (Connection.crud(cmd))
-                foreach (Subcategory subcategory in product.Subcategories)
-                {
-                    SubcategoryDAO subcategoryDAO = new SubcategoryDAO();
-
-                    cmd.CommandText = "INSERT INTO product_subcategory(subcategory_id, product_id)" +
-                        "output INSERTED.id values ("+ subcategoryDAO.insert(subcategory).Id + "," +
-                        product.Id+")";
-                }
                 return product;
             return null;
         }

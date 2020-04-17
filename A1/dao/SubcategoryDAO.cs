@@ -101,5 +101,17 @@ namespace A1.dao
             return dt;
         }
 
+        public static DataTable returnDataSourceCheckbox(String name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT * FROM subcategory WHERE subcategory.name LIKE '"+ name + "'";
+            SqlDataReader dr = Connection.select(cmd);
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd.CommandText, Connection.connect());
+            da.Fill(dt);
+
+            return dt;
+        }
+
     }
 }

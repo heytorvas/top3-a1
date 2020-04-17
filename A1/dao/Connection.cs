@@ -22,6 +22,23 @@ namespace A1.dao
             return con;
         }
 
+        public static int returnIdAfterInsert(SqlCommand cmd)
+        {
+            try
+            {
+                SqlConnection con = connect();
+                cmd.Connection = con;
+                int modified = (int)cmd.ExecuteScalar();
+                con.Close();
+                return modified;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex);
+                return 0;
+            }
+        }
+
         public static Boolean crud(SqlCommand cmd)
         {
             try

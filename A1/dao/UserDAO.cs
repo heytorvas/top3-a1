@@ -15,7 +15,8 @@ namespace A1.dao
         public User insert(User user)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "INSERT INTO user(name, cpf, email, password, telephone, type_user) output INSERTED.id values (@name, @cpf, @email, @password, @telephone, @type_user)";
+            cmd.CommandText = "INSERT INTO sysuser(name, cpf, email, password, telephone, type_user) " +
+                "output INSERTED.id values (@name, @cpf, @email, @password, @telephone, @type_user)";
             cmd.Parameters.AddWithValue("@name", user.Name);
             cmd.Parameters.AddWithValue("@cpf", user.Cpf);
             cmd.Parameters.AddWithValue("@email", user.Email);
@@ -30,7 +31,8 @@ namespace A1.dao
         public User update(User user)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "UPDATE user set name = @name, cpf = @cpf, email = @email, password = @password, telephone = @telephone, type_user = @type_user, id = @id where id = @id";
+            cmd.CommandText = "UPDATE sysuser set name = @name, cpf = @cpf, email = @email, " +
+                "password = @password, telephone = @telephone, type_user = @type_user where id = @id";
             cmd.Parameters.AddWithValue("@name", user.Name);
             cmd.Parameters.AddWithValue("@cpf", user.Cpf);
             cmd.Parameters.AddWithValue("@email", user.Email);
@@ -46,7 +48,7 @@ namespace A1.dao
         public void delete(User user)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "DELETE FROM user WHERE id = @id";
+            cmd.CommandText = "DELETE FROM sysuser WHERE id = @id";
             cmd.Parameters.AddWithValue("@id", user.Id);
             Connection.crud(cmd);
         }
@@ -54,7 +56,7 @@ namespace A1.dao
         public static User findById(int id)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM user WHERE id = @id";
+            cmd.CommandText = "SELECT * FROM sysuser WHERE id = @id";
             cmd.Parameters.AddWithValue("@id", id);
             SqlDataReader dr = Connection.select(cmd);
 
@@ -67,7 +69,7 @@ namespace A1.dao
                 user.Cpf = dr["cpf"].ToString();
                 user.Email = dr["password"].ToString();
                 user.Telephone = dr["telephone"].ToString();
-                user.TypeUser = (TypeUser)dr["type_user"];
+                user.TypeUser = dr["type_user"].ToString();
             }
             else
                 user = null;
@@ -78,7 +80,7 @@ namespace A1.dao
         public List<User> findAll()
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM user";
+            cmd.CommandText = "SELECT * FROM sysuser";
             SqlDataReader dr = Connection.select(cmd);
             List<User> users = new List<User>();
 
@@ -93,7 +95,7 @@ namespace A1.dao
                     user.Cpf = dr["cpf"].ToString();
                     user.Email = dr["password"].ToString();
                     user.Telephone = dr["telephone"].ToString();
-                    user.TypeUser = (TypeUser)dr["type_user"];
+                    user.TypeUser = dr["type_user"].ToString();
                     users.Add(user);
                 }
             }
@@ -106,12 +108,11 @@ namespace A1.dao
         public static DataTable returnDataSource()
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM user";
+            cmd.CommandText = "SELECT * FROM sysuser";
             SqlDataReader dr = Connection.select(cmd);
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd.CommandText, Connection.connect());
             da.Fill(dt);
-
             return dt;
         }
     }
