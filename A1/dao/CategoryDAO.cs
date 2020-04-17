@@ -26,7 +26,7 @@ namespace A1.dao
         public Category update(Category category)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "UPDATE category set name = @name, id = @id where id = @id";
+            cmd.CommandText = "UPDATE category set name = @name where id = @id";
             cmd.Parameters.AddWithValue("@id", category.Id);
             cmd.Parameters.AddWithValue("@name", category.Name);
             if (Connection.crud(cmd))

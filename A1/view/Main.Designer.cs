@@ -108,7 +108,7 @@
             this.tbProductQuantityAvailable = new System.Windows.Forms.TextBox();
             this.tbProductName = new System.Windows.Forms.TextBox();
             this.tabPageEntry = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridEntry = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -172,7 +172,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.tabPageEntry.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEntry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.entryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sysuserBindingSource1)).BeginInit();
             this.tabPageWithdrawal.SuspendLayout();
@@ -350,6 +350,7 @@
             this.btnUserDelete.TabIndex = 19;
             this.btnUserDelete.Text = "DELETE";
             this.btnUserDelete.UseVisualStyleBackColor = true;
+            this.btnUserDelete.Click += new System.EventHandler(this.btnUserDelete_Click);
             // 
             // btnUserUpdate
             // 
@@ -489,6 +490,7 @@
             this.dataGridCategory.ReadOnly = true;
             this.dataGridCategory.Size = new System.Drawing.Size(343, 150);
             this.dataGridCategory.TabIndex = 27;
+            this.dataGridCategory.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCategory_CellContentDoubleClick);
             // 
             // idDataGridViewTextBoxColumn1
             // 
@@ -544,6 +546,7 @@
             this.btnCategoryDelete.TabIndex = 23;
             this.btnCategoryDelete.Text = "DELETE";
             this.btnCategoryDelete.UseVisualStyleBackColor = true;
+            this.btnCategoryDelete.Click += new System.EventHandler(this.btnCategoryDelete_Click);
             // 
             // btnCategoryUpdate
             // 
@@ -553,6 +556,7 @@
             this.btnCategoryUpdate.TabIndex = 22;
             this.btnCategoryUpdate.Text = "UPDATE";
             this.btnCategoryUpdate.UseVisualStyleBackColor = true;
+            this.btnCategoryUpdate.Click += new System.EventHandler(this.btnCategoryUpdate_Click);
             // 
             // btnCategorySave
             // 
@@ -598,6 +602,7 @@
             this.dataGridSubcategory.ReadOnly = true;
             this.dataGridSubcategory.Size = new System.Drawing.Size(344, 150);
             this.dataGridSubcategory.TabIndex = 38;
+            this.dataGridSubcategory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridSubcategory_CellDoubleClick);
             // 
             // idDataGridViewTextBoxColumn2
             // 
@@ -691,6 +696,7 @@
             this.btnSubCategoryDelete.TabIndex = 29;
             this.btnSubCategoryDelete.Text = "DELETE";
             this.btnSubCategoryDelete.UseVisualStyleBackColor = true;
+            this.btnSubCategoryDelete.Click += new System.EventHandler(this.btnSubCategoryDelete_Click);
             // 
             // btnSubCategoryUpdate
             // 
@@ -700,6 +706,7 @@
             this.btnSubCategoryUpdate.TabIndex = 28;
             this.btnSubCategoryUpdate.Text = "UPDATE";
             this.btnSubCategoryUpdate.UseVisualStyleBackColor = true;
+            this.btnSubCategoryUpdate.Click += new System.EventHandler(this.btnSubCategoryUpdate_Click);
             // 
             // tabPageProduct
             // 
@@ -746,6 +753,7 @@
             this.dataGridProduct.ReadOnly = true;
             this.dataGridProduct.Size = new System.Drawing.Size(648, 150);
             this.dataGridProduct.TabIndex = 41;
+            this.dataGridProduct.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProduct_CellDoubleClick);
             // 
             // idDataGridViewTextBoxColumn5
             // 
@@ -838,6 +846,7 @@
             this.btnProductDelete.TabIndex = 36;
             this.btnProductDelete.Text = "DELETE";
             this.btnProductDelete.UseVisualStyleBackColor = true;
+            this.btnProductDelete.Click += new System.EventHandler(this.btnProductDelete_Click);
             // 
             // btnProductUpdate
             // 
@@ -847,6 +856,7 @@
             this.btnProductUpdate.TabIndex = 35;
             this.btnProductUpdate.Text = "UPDATE";
             this.btnProductUpdate.UseVisualStyleBackColor = true;
+            this.btnProductUpdate.Click += new System.EventHandler(this.btnProductUpdate_Click);
             // 
             // btnProductSave
             // 
@@ -928,7 +938,7 @@
             // 
             // tabPageEntry
             // 
-            this.tabPageEntry.Controls.Add(this.dataGridView2);
+            this.tabPageEntry.Controls.Add(this.dataGridEntry);
             this.tabPageEntry.Controls.Add(this.btnEntryClear);
             this.tabPageEntry.Controls.Add(this.btnEntryDelete);
             this.tabPageEntry.Controls.Add(this.btnEntryUpdate);
@@ -951,25 +961,26 @@
             this.tabPageEntry.Text = "ENTRY";
             this.tabPageEntry.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dataGridEntry
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridEntry.AllowUserToAddRows = false;
+            this.dataGridEntry.AllowUserToDeleteRows = false;
+            this.dataGridEntry.AutoGenerateColumns = false;
+            this.dataGridEntry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridEntry.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn3,
             this.productidDataGridViewTextBoxColumn,
             this.useridDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
             this.dateentryDataGridViewTextBoxColumn,
             this.quantityentryDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.entryBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(51, 232);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(640, 150);
-            this.dataGridView2.TabIndex = 53;
+            this.dataGridEntry.DataSource = this.entryBindingSource;
+            this.dataGridEntry.Location = new System.Drawing.Point(51, 232);
+            this.dataGridEntry.Name = "dataGridEntry";
+            this.dataGridEntry.ReadOnly = true;
+            this.dataGridEntry.Size = new System.Drawing.Size(640, 150);
+            this.dataGridEntry.TabIndex = 53;
+            this.dataGridEntry.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEntry_CellDoubleClick);
             // 
             // idDataGridViewTextBoxColumn3
             // 
@@ -1026,6 +1037,7 @@
             this.btnEntryClear.TabIndex = 52;
             this.btnEntryClear.Text = "CLEAR";
             this.btnEntryClear.UseVisualStyleBackColor = true;
+            this.btnEntryClear.Click += new System.EventHandler(this.btnEntryClear_Click);
             // 
             // btnEntryDelete
             // 
@@ -1053,6 +1065,7 @@
             this.btnEntrySave.TabIndex = 49;
             this.btnEntrySave.Text = "SAVE";
             this.btnEntrySave.UseVisualStyleBackColor = true;
+            this.btnEntrySave.Click += new System.EventHandler(this.btnEntrySave_Click);
             // 
             // label21
             // 
@@ -1396,7 +1409,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.tabPageEntry.ResumeLayout(false);
             this.tabPageEntry.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEntry)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.entryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sysuserBindingSource1)).EndInit();
             this.tabPageWithdrawal.ResumeLayout(false);
@@ -1478,7 +1491,7 @@
         private System.Windows.Forms.Button btnEntryDelete;
         private System.Windows.Forms.Button btnEntryUpdate;
         private System.Windows.Forms.Button btnEntrySave;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridEntry;
         private System.Windows.Forms.Button btnWithdrawalClear;
         private System.Windows.Forms.Button btnWithdrawalDelete;
         private System.Windows.Forms.Button btnWithdrawalUpdate;

@@ -26,7 +26,7 @@ namespace A1.dao
         public Subcategory update(Subcategory subcategory)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "UPDATE subcategory set name = @name, category_id = @category_id, id = @id where id = @id";
+            cmd.CommandText = "UPDATE subcategory set name = @name, category_id = @category_id where id = @id";
             cmd.Parameters.AddWithValue("@id", subcategory.Id);
             cmd.Parameters.AddWithValue("@name", subcategory.Name);
             cmd.Parameters.AddWithValue("@category_id", subcategory.Category.Id);

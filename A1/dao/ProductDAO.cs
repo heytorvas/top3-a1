@@ -44,9 +44,9 @@ namespace A1.dao
         public Product update(Product product)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "UPDATE product set image_id = @image_id, name = @name, label = @label, quantity_available = @quantity_available, price = price, id = @id where id = @id";
+            cmd.CommandText = "UPDATE product set name = @name, label = @label, quantity_available = @quantity_available, price = price where id = @id";
             cmd.Parameters.AddWithValue("@id", product.Id);
-            cmd.Parameters.AddWithValue("@image_id", product.Image.Id);
+            //cmd.Parameters.AddWithValue("@image_id", product.Image.Id);
             cmd.Parameters.AddWithValue("@name", product.Name);
             cmd.Parameters.AddWithValue("@label", product.Label);
             cmd.Parameters.AddWithValue("@quantity_available", product.QuantityAvailable);
@@ -76,11 +76,11 @@ namespace A1.dao
             {
                 dr.Read();
                 product.Id = (int)dr["id"];
-                product.Image.Id = (int)dr["image_id"];
+                //product.Image.Id = int.Parse(dr["image_id"].ToString());
                 product.Name = dr["name"].ToString();
                 product.Label = dr["label"].ToString();
                 product.QuantityAvailable = (int)dr["quantity_available"];
-                product.Price = (float)dr["price"];
+                product.Price = float.Parse(dr["price"].ToString());
 
             }
             else
