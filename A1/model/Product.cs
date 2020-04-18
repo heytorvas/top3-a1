@@ -9,7 +9,7 @@ namespace A1.model
     public class Product
     {
         private int id;
-        private Image image;
+        private String image;
         private String name;
         private String label;
         private int quantityAvailable;
@@ -21,8 +21,8 @@ namespace A1.model
         public int QuantityAvailable { get => quantityAvailable; set => quantityAvailable = value; }
         public string Label { get => label; set => label = value; }
         public string Name { get => name; set => name = value; }
-        public Image Image { get => image; set => image = value; }
         public int Id { get => id; set => id = value; }
         public List<Subcategory> Subcategories { get => subcategories; set => subcategories = value; }
+        public string Image { get => image; set => image = value; }
     }
 }

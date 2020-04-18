@@ -62,7 +62,6 @@
     <Compile Include="model\Entry.cs" />
     <Compile Include="model\Product.cs" />
     <Compile Include="model\Subcategory.cs" />
-    <Compile Include="model\Image.cs" />
     <Compile Include="model\User.cs" />
     <Compile Include="model\Withdrawal.cs" />
     <Compile Include="view\Login.cs">

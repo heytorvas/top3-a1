@@ -15,12 +15,12 @@ namespace A1.dao
         public int insertReturned(Product product)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "INSERT INTO product(name, label, quantity_available, price) output INSERTED.id values (@name, @label, @quantity_available, @price)";
-            //cmd.Parameters.AddWithValue("@image_id", product.Image.Id);
+            cmd.CommandText = "INSERT INTO product(name, label, quantity_available, price, image) output INSERTED.id values (@name, @label, @quantity_available, @price, @image)";
             cmd.Parameters.AddWithValue("@name", product.Name);
             cmd.Parameters.AddWithValue("@label", product.Label);
             cmd.Parameters.AddWithValue("@quantity_available", product.QuantityAvailable);
             cmd.Parameters.AddWithValue("@price", product.Price);
+            cmd.Parameters.AddWithValue("@image", product.Image);
 
             int idReturned = Connection.returnIdAfterInsert(cmd);
             return idReturned;
@@ -30,7 +30,7 @@ namespace A1.dao
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "INSERT INTO product(image_id, name, label, quantity_available, price) output INSERTED.id values (@image_id, @name, @label, @quantity_available, @price)";
-            cmd.Parameters.AddWithValue("@image_id", product.Image.Id);
+            //cmd.Parameters.AddWithValue("@image_id", product.Image.Id);
             cmd.Parameters.AddWithValue("@name", product.Name);
             cmd.Parameters.AddWithValue("@label", product.Label);
             cmd.Parameters.AddWithValue("@quantity_available", product.QuantityAvailable);
@@ -103,7 +103,7 @@ namespace A1.dao
                     dr.Read();
                     Product product = new Product();
                     product.Id = (int)dr["id"];
-                    product.Image.Id = (int)dr["image_id"];
+                    //product.Image.Id = (int)dr["image_id"];
                     product.Name = dr["name"].ToString();
                     product.Label = dr["label"].ToString();
                     product.QuantityAvailable = (int)dr["quantity_available"];

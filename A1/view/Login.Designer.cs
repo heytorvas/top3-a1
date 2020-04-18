@@ -46,7 +46,6 @@
             this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "PATRIOTS STORE";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -73,7 +72,6 @@
             this.tbLoginEmail.Name = "tbLoginEmail";
             this.tbLoginEmail.Size = new System.Drawing.Size(370, 33);
             this.tbLoginEmail.TabIndex = 3;
-            this.tbLoginEmail.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnLoginSignIn
             // 
@@ -83,7 +81,7 @@
             this.btnLoginSignIn.TabIndex = 5;
             this.btnLoginSignIn.Text = "SIGN IN";
             this.btnLoginSignIn.UseVisualStyleBackColor = true;
-            this.btnLoginSignIn.Click += new System.EventHandler(this.btnLoginSignIn_Click);
+            this.btnLoginSignIn.Click += new System.EventHandler(this.btnLoginSignIn_Click_1);
             // 
             // btnLoginClear
             // 
@@ -103,7 +101,6 @@
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "LOGIN";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // tbLoginPassword
             // 
@@ -130,6 +127,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

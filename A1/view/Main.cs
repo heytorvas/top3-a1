@@ -40,10 +40,17 @@ namespace A1
         public Main()
         {
             InitializeComponent();
-
             DataTable dtSubCategory = SubcategoryDAO.returnDataSource();
             for (int i = 0; i < dtSubCategory.Rows.Count; i++)
                 checkedListBoxSubcategory.Items.Add(dtSubCategory.Rows[i]["name"].ToString());
+
+        }
+        public void SetLabel(string newText)
+	    {
+	        Invoke(new Action(() => labelTypeUser.Text = newText));
+            Invoke(new Action(() => labelTypeUser.Visible = false));
+            if (labelTypeUser.Text == "Employee")
+                tabControl.TabPages.Remove(tabPageUser);
         }
 
         private void btnCategorySave_Click(object sender, EventArgs e)
@@ -52,34 +59,25 @@ namespace A1
 
             categoryDAO.insert(category);
             dataGridCategory.DataSource = CategoryDAO.returnDataSource();
+            cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
             btnCategoryClear_Click(sender, e);
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'a1DataSet.product' table. You can move, or remove it, as needed.
-            this.productTableAdapter.Fill(this.a1DataSet.product);
-            // TODO: This line of code loads data into the 'a1DataSet.subcategory' table. You can move, or remove it, as needed.
-            this.subcategoryTableAdapter.Fill(this.a1DataSet.subcategory);
-            // TODO: This line of code loads data into the 'a1DataSet.withdrawal' table. You can move, or remove it, as needed.
-            this.withdrawalTableAdapter.Fill(this.a1DataSet.withdrawal);
-            // TODO: This line of code loads data into the 'a1DataSet.entry' table. You can move, or remove it, as needed.
-            this.entryTableAdapter.Fill(this.a1DataSet.entry);
-            // TODO: This line of code loads data into the 'a1DataSet.category' table. You can move, or remove it, as needed.
-            this.categoryTableAdapter.Fill(this.a1DataSet.category);
-            // TODO: This line of code loads data into the 'a1DataSet.sysuser' table. You can move, or remove it, as needed.
-            this.sysuserTableAdapter.Fill(this.a1DataSet.sysuser);
-            // TODO: This line of code loads data into the 'a1DataSet.subcategory' table. You can move, or remove it, as needed.
-            this.subcategoryTableAdapter.Fill(this.a1DataSet.subcategory);
-            // TODO: This line of code loads data into the 'a1DataSet.withdrawal' table. You can move, or remove it, as needed.
-            this.withdrawalTableAdapter.Fill(this.a1DataSet.withdrawal);
-            // TODO: This line of code loads data into the 'a1DataSet.entry' table. You can move, or remove it, as needed.
-            this.entryTableAdapter.Fill(this.a1DataSet.entry);
-            // TODO: This line of code loads data into the 'a1DataSet.product' table. You can move, or remove it, as needed.
-            this.productTableAdapter.Fill(this.a1DataSet.product);
-            // TODO: This line of code loads data into the 'a1DataSet.category' table. You can move, or remove it, as needed.
-            this.categoryTableAdapter.Fill(this.a1DataSet.category);
-            // TODO: This line of code loads data into the 'a1DataSet.user' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'a1DataSet1.withdrawal' table. You can move, or remove it, as needed.
+            this.withdrawalTableAdapter1.Fill(this.a1DataSet1.withdrawal);
+            // TODO: This line of code loads data into the 'a1DataSet1.entry' table. You can move, or remove it, as needed.
+            this.entryTableAdapter1.Fill(this.a1DataSet1.entry);
+            // TODO: This line of code loads data into the 'a1DataSet1.product' table. You can move, or remove it, as needed.
+            this.productTableAdapter1.Fill(this.a1DataSet1.product);
+            // TODO: This line of code loads data into the 'a1DataSet1.subcategory' table. You can move, or remove it, as needed.
+            this.subcategoryTableAdapter1.Fill(this.a1DataSet1.subcategory);
+            // TODO: This line of code loads data into the 'a1DataSet1.category' table. You can move, or remove it, as needed.
+            this.categoryTableAdapter1.Fill(this.a1DataSet1.category);
+            // TODO: This line of code loads data into the 'a1DataSet1.sysuser' table. You can move, or remove it, as needed.
+            this.sysuserTableAdapter1.Fill(this.a1DataSet1.sysuser);
+
 
         }
 
@@ -89,10 +87,12 @@ namespace A1
             user.Cpf = tbUserCPF.Text;
             user.Email = tbUserEmail.Text;
             user.Password = tbUserPassword.Text;
-            user.Telephone = tbUserPassword.Text;
+            user.Telephone = tbUserTelephone.Text;
 
             userDAO.insert(user);
             dataGridUser.DataSource = UserDAO.returnDataSource();
+            cbEntryUser.DataSource = dataGridUser.DataSource;
+            cbWithdrawalUser.DataSource = dataGridUser.DataSource;
             btnUserClear_Click(sender, e);
         }
 
@@ -121,6 +121,12 @@ namespace A1
 
             subcategoryDAO.insert(subcategory);
             dataGridSubcategory.DataSource = SubcategoryDAO.returnDataSource();
+
+            checkedListBoxSubcategory.Items.Clear();
+
+            DataTable dtSubCategory1 = SubcategoryDAO.returnDataSource();
+            for (int i = 0; i < dtSubCategory1.Rows.Count; i++)
+                checkedListBoxSubcategory.Items.Add(dtSubCategory1.Rows[i]["name"].ToString());
             btnSubCategoryClear_Click(sender, e);
         }
 
@@ -146,8 +152,16 @@ namespace A1
 
             product.Name = tbProductName.Text;
             product.Label = tbProductLabel.Text;
-            product.Price = float.Parse(tbProductPrice.Text.Trim());
-            product.QuantityAvailable = int.Parse(tbProductQuantityAvailable.Text.Trim());
+            product.Price = 0;
+            product.QuantityAvailable = 0;
+
+            string fname = tbProductName.Text + ".jpg";
+            string folder = "C:\\Users\\Heytor\\Desktop\\devCSharp\\A1\\A1\\Files";
+            string pathstring = System.IO.Path.Combine(folder, fname);
+            Image a = pbProductImage.Image;
+            a.Save(pathstring);
+
+            product.Image = pathstring;
 
             int product_id = productDAO.insertReturned(product);
 
@@ -161,6 +175,8 @@ namespace A1
             }
 
             dataGridProduct.DataSource = ProductDAO.returnDataSource();
+            cbEntryProduct.DataSource = dataGridProduct.DataSource;
+            cbWithdrawalProduct.DataSource = dataGridProduct.DataSource;
             btnProductClear_Click(sender, e);
         }
 
@@ -179,8 +195,8 @@ namespace A1
         {
             tbProductName.Text = "";
             tbProductLabel.Text = "";
-            tbProductPrice.Text = "";
-            tbProductQuantityAvailable.Text = "";
+            tbProductImage.Text = "";
+            pbProductImage.Image = null;
             while (checkedListBoxSubcategory.CheckedIndices.Count > 0)
                 checkedListBoxSubcategory.SetItemChecked(checkedListBoxSubcategory.CheckedIndices[0], false);
         }
@@ -196,7 +212,6 @@ namespace A1
             cbUserType.Text = dataGridUser.CurrentRow.Cells[6].Value.ToString();
         }
 
-
         private void btnUserUpdate_Click_1(object sender, EventArgs e)
         {
             
@@ -205,10 +220,12 @@ namespace A1
             user.Cpf = tbUserCPF.Text;
             user.Email = tbUserEmail.Text;
             user.Password = tbUserPassword.Text;
-            user.Telephone = tbUserPassword.Text;
+            user.Telephone = tbUserTelephone.Text;
 
             userDAO.update(user);
             dataGridUser.DataSource = UserDAO.returnDataSource();
+            cbEntryUser.DataSource = dataGridUser.DataSource;
+            cbWithdrawalUser.DataSource = dataGridUser.DataSource;
             btnUserClear_Click(sender, e);
 
         }
@@ -224,6 +241,8 @@ namespace A1
 
             userDAO.delete(user);
             dataGridUser.DataSource = UserDAO.returnDataSource();
+            cbEntryUser.DataSource = dataGridUser.DataSource;
+            cbWithdrawalUser.DataSource = dataGridUser.DataSource;
             btnUserClear_Click(sender, e);
         }
 
@@ -240,6 +259,7 @@ namespace A1
 
             categoryDAO.update(category);
             dataGridCategory.DataSource = CategoryDAO.returnDataSource();
+            cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
             btnCategoryClear_Click(sender, e);
         }
 
@@ -250,6 +270,7 @@ namespace A1
 
             categoryDAO.delete(category);
             dataGridCategory.DataSource = CategoryDAO.returnDataSource();
+            cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
             btnCategoryClear_Click(sender, e);
         }
 
@@ -272,6 +293,12 @@ namespace A1
 
             subcategoryDAO.update(subcategory);
             dataGridSubcategory.DataSource = SubcategoryDAO.returnDataSource();
+
+            checkedListBoxSubcategory.Items.Clear();
+
+            DataTable dtSubCategory1 = SubcategoryDAO.returnDataSource();
+            for (int i = 0; i < dtSubCategory1.Rows.Count; i++)
+                checkedListBoxSubcategory.Items.Add(dtSubCategory1.Rows[i]["name"].ToString());
             btnSubCategoryClear_Click(sender, e);
         }
 
@@ -283,23 +310,26 @@ namespace A1
                 subcategory.Category = new Category();
             subcategory.Category.Id = (int)cbSubcategoryCategory.SelectedValue;
 
-            subcategoryDAO.delete(subcategory);
-            dataGridSubcategory.DataSource = SubcategoryDAO.returnDataSource();
+            checkedListBoxSubcategory.Items.Clear();
+
+            DataTable dtSubCategory1 = SubcategoryDAO.returnDataSource();
+            for (int i = 0; i < dtSubCategory1.Rows.Count; i++)
+                checkedListBoxSubcategory.Items.Add(dtSubCategory1.Rows[i]["name"].ToString());
             btnSubCategoryClear_Click(sender, e);
         }
 
         private void dataGridProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             idProduct = (int)dataGridProduct.CurrentRow.Cells[0].Value;
-            //CELLS[1] = image_id
-            tbProductName.Text = dataGridProduct.CurrentRow.Cells[2].Value.ToString();
-            tbProductLabel.Text = dataGridProduct.CurrentRow.Cells[3].Value.ToString();
-            tbProductQuantityAvailable.Text = dataGridProduct.CurrentRow.Cells[4].Value.ToString();
-            tbProductPrice.Text = dataGridProduct.CurrentRow.Cells[5].Value.ToString();
+            tbProductName.Text = dataGridProduct.CurrentRow.Cells[1].Value.ToString();
+            tbProductLabel.Text = dataGridProduct.CurrentRow.Cells[2].Value.ToString();
+
+            string pathstring = dataGridProduct.CurrentRow.Cells[5].Value.ToString();
+            pbProductImage.Image = Image.FromFile(pathstring);
+            tbProductImage.Text = dataGridProduct.CurrentRow.Cells[5].Value.ToString();
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "SELECT * FROM product_subcategory WHERE product_id = " + idProduct;
-            //cmd.Parameters.AddWithValue("@product_id", idProduct);
             SqlDataReader dr = Connection.select(cmd);
             DataTable dtsub = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd.CommandText, Connection.connect());
@@ -350,8 +380,7 @@ namespace A1
             product.Id = idProduct;
             product.Name = tbProductName.Text;
             product.Label = tbProductLabel.Text;
-            product.Price = float.Parse(tbProductPrice.Text.Trim());
-            product.QuantityAvailable = int.Parse(tbProductQuantityAvailable.Text.Trim());
+            product.Price = 0;
 
             productDAO.update(product);
 
@@ -396,8 +425,7 @@ namespace A1
             product.Id = idProduct;
             product.Name = tbProductName.Text;
             product.Label = tbProductLabel.Text;
-            product.Price = float.Parse(tbProductPrice.Text.Trim());
-            product.QuantityAvailable = int.Parse(tbProductQuantityAvailable.Text.Trim());
+            product.Price = 0;
 
             productDAO.delete(product);
             dataGridProduct.DataSource = ProductDAO.returnDataSource();
@@ -419,6 +447,16 @@ namespace A1
 
             entryDAO.insert(entry);
             dataGridEntry.DataSource = EntryDAO.returnDataSource();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "UPDATE product set quantity_available = @quantity_available, price = @price WHERE id = @product_id";
+            cmd.Parameters.AddWithValue("@quantity_available", entry.QuantityEntry);
+            cmd.Parameters.AddWithValue("@price", entry.Price);
+            cmd.Parameters.AddWithValue("@product_id", entry.Product.Id);
+            Connection.crud(cmd);
+
+            dataGridProduct.DataSource = ProductDAO.returnDataSource();
+
             btnEntryClear_Click(sender, e);
         }
 
@@ -497,6 +535,29 @@ namespace A1
 
             withdrawalDAO.insert(withdrawal);
             dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
+
+            SqlCommand cmd1 = new SqlCommand();
+            cmd1.CommandText = "SELECT * FROM product WHERE id = " + withdrawal.Product.Id;
+            Connection.select(cmd1);
+
+            SqlDataReader dr = Connection.select(cmd1);
+            DataTable dtsub = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd1.CommandText, Connection.connect());
+            da.Fill(dtsub);
+            int qtd_now = 0;
+
+            DataTable dt = dtsub;
+            for (int i = 0; i < dt.Rows.Count; i++)
+                qtd_now = int.Parse(dt.Rows[i]["quantity_available"].ToString());
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "UPDATE product set quantity_available = @quantity_available WHERE id = @product_id";
+            cmd.Parameters.AddWithValue("@quantity_available", qtd_now - withdrawal.QuantityWithdrawal);
+            cmd.Parameters.AddWithValue("@product_id", withdrawal.Product.Id);
+            Connection.crud(cmd);
+
+            dataGridProduct.DataSource = ProductDAO.returnDataSource();
+
             btnWithdrawalClear_Click(sender, e);
         }
 
@@ -555,6 +616,68 @@ namespace A1
             withdrawalDAO.delete(withdrawal);
             dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
             btnWithdrawalClear_Click(sender, e);
+        }
+
+        private void tabPageUser_Click(object sender, EventArgs e)
+        {
+            dataGridUser.DataSource = UserDAO.returnDataSource();
+        }
+
+        private void tabPageCategory_Click(object sender, EventArgs e)
+        {
+            dataGridCategory.DataSource = CategoryDAO.returnDataSource();
+        }
+
+        private void tabPageSubCategory_Click(object sender, EventArgs e)
+        {
+            dataGridCategory.DataSource = CategoryDAO.returnDataSource();
+            dataGridSubcategory.DataSource = SubcategoryDAO.returnDataSource();
+        }
+
+        private void tabPageProduct_Click(object sender, EventArgs e)
+        {
+            dataGridProduct.DataSource = ProductDAO.returnDataSource();
+        }
+
+        private void tabPageEntry_Click(object sender, EventArgs e)
+        {
+            dataGridUser.DataSource = UserDAO.returnDataSource();
+            dataGridProduct.DataSource = ProductDAO.returnDataSource();
+            dataGridEntry.DataSource = EntryDAO.returnDataSource();
+        }
+
+        private void tabPageWithdrawal_Click(object sender, EventArgs e)
+        {
+            dataGridUser.DataSource = UserDAO.returnDataSource();
+            dataGridProduct.DataSource = ProductDAO.returnDataSource();
+            dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
+        }
+
+        private void pbProductImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            PictureBox p = sender as PictureBox;
+
+            if (p != null)
+            {
+                open.Filter = "(*.jpg;*.jpeg;*.bmp;)| *.jpg; *.jpeg; *.bmp; ";
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    p.Image = Image.FromFile(open.FileName);
+                }
+            }
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
         }
     }
 }
