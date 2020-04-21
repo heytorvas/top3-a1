@@ -44,11 +44,22 @@ namespace A1
             for (int i = 0; i < dtSubCategory.Rows.Count; i++)
                 checkedListBoxSubcategory.Items.Add(dtSubCategory.Rows[i]["name"].ToString());
 
+            flSearchCategory.Controls.Clear();
+            DataTable dtCategory = CategoryDAO.returnDataSource();
+            for (int i = 0; i < dtCategory.Rows.Count; i++)
+            {
+                RadioButton rb = new RadioButton();
+                rb.Text = dtCategory.Rows[i]["name"].ToString();
+                flSearchCategory.Controls.Add(rb);
+            }
+
+
         }
+
         public void SetLabel(string newText)
-	    {
-	        Invoke(new Action(() => labelTypeUser.Text = newText));
-            Invoke(new Action(() => labelTypeUser.Visible = false));
+        {
+            Invoke(new Action(() => labelTypeUser.Text = newText));
+            //Invoke(new Action(() => labelTypeUser.Visible = false));
             if (labelTypeUser.Text == "Employee")
                 tabControl.TabPages.Remove(tabPageUser);
         }
@@ -60,6 +71,16 @@ namespace A1
             categoryDAO.insert(category);
             dataGridCategory.DataSource = CategoryDAO.returnDataSource();
             cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
+
+            flSearchCategory.Controls.Clear();
+            DataTable dtCategory = CategoryDAO.returnDataSource();
+            for (int i = 0; i < dtCategory.Rows.Count; i++)
+            {
+                RadioButton rb = new RadioButton();
+                rb.Text = dtCategory.Rows[i]["name"].ToString();
+                flSearchCategory.Controls.Add(rb);
+            }
+
             btnCategoryClear_Click(sender, e);
         }
 
@@ -77,8 +98,6 @@ namespace A1
             this.categoryTableAdapter1.Fill(this.a1DataSet1.category);
             // TODO: This line of code loads data into the 'a1DataSet1.sysuser' table. You can move, or remove it, as needed.
             this.sysuserTableAdapter1.Fill(this.a1DataSet1.sysuser);
-
-
         }
 
         private void btnUserSave_Click(object sender, EventArgs e)
@@ -177,6 +196,7 @@ namespace A1
             dataGridProduct.DataSource = ProductDAO.returnDataSource();
             cbEntryProduct.DataSource = dataGridProduct.DataSource;
             cbWithdrawalProduct.DataSource = dataGridProduct.DataSource;
+            dataGridSearchProduct.DataSource = ProductDAO.returnDataSource();
             btnProductClear_Click(sender, e);
         }
 
@@ -203,7 +223,7 @@ namespace A1
 
         private void dataGridUser_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            idUser = (int) dataGridUser.CurrentRow.Cells[0].Value;
+            idUser = (int)dataGridUser.CurrentRow.Cells[0].Value;
             tbUserName.Text = dataGridUser.CurrentRow.Cells[1].Value.ToString();
             tbUserCPF.Text = dataGridUser.CurrentRow.Cells[2].Value.ToString();
             tbUserEmail.Text = dataGridUser.CurrentRow.Cells[3].Value.ToString();
@@ -214,7 +234,7 @@ namespace A1
 
         private void btnUserUpdate_Click_1(object sender, EventArgs e)
         {
-            
+
             user.Id = idUser;
             user.Name = tbUserName.Text;
             user.Cpf = tbUserCPF.Text;
@@ -260,6 +280,16 @@ namespace A1
             categoryDAO.update(category);
             dataGridCategory.DataSource = CategoryDAO.returnDataSource();
             cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
+
+            flSearchCategory.Controls.Clear();
+            DataTable dtCategory = CategoryDAO.returnDataSource();
+            for (int i = 0; i < dtCategory.Rows.Count; i++)
+            {
+                RadioButton rb = new RadioButton();
+                rb.Text = dtCategory.Rows[i]["name"].ToString();
+                flSearchCategory.Controls.Add(rb);
+            }
+
             btnCategoryClear_Click(sender, e);
         }
 
@@ -271,6 +301,16 @@ namespace A1
             categoryDAO.delete(category);
             dataGridCategory.DataSource = CategoryDAO.returnDataSource();
             cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
+
+            flSearchCategory.Controls.Clear();
+            DataTable dtCategory = CategoryDAO.returnDataSource();
+            for (int i = 0; i < dtCategory.Rows.Count; i++)
+            {
+                RadioButton rb = new RadioButton();
+                rb.Text = dtCategory.Rows[i]["name"].ToString();
+                flSearchCategory.Controls.Add(rb);
+            }
+
             btnCategoryClear_Click(sender, e);
         }
 
@@ -349,7 +389,7 @@ namespace A1
                     }
                 }
             }
-            
+
         }
 
         private void btnProductUpdate_Click(object sender, EventArgs e)
@@ -394,6 +434,7 @@ namespace A1
             }
 
             dataGridProduct.DataSource = ProductDAO.returnDataSource();
+            dataGridSearchProduct.DataSource = ProductDAO.returnDataSource();
             btnProductClear_Click(sender, e);
         }
 
@@ -429,6 +470,7 @@ namespace A1
 
             productDAO.delete(product);
             dataGridProduct.DataSource = ProductDAO.returnDataSource();
+            dataGridSearchProduct.DataSource = ProductDAO.returnDataSource();
             btnProductClear_Click(sender, e);
         }
 
@@ -470,7 +512,7 @@ namespace A1
             User u = UserDAO.findById(idEntryUser);
             cbEntryUser.Text = u.Name;
             tbEntryPrice.Text = dataGridEntry.CurrentRow.Cells[3].Value.ToString();
-            dtEntryDate.Value = (DateTime) dataGridEntry.CurrentRow.Cells[4].Value;
+            dtEntryDate.Value = (DateTime)dataGridEntry.CurrentRow.Cells[4].Value;
             tbEntryQuantity.Text = dataGridEntry.CurrentRow.Cells[5].Value.ToString();
         }
 
@@ -678,6 +720,80 @@ namespace A1
             Login login = new Login();
             login.Show();
             this.Hide();
+        }
+
+        private void btnSearchName_Click(object sender, EventArgs e)
+        {
+            dataGridSearchProduct.DataSource = ProductDAO.returnDataSourceSearch(tbSearchName.Text.Trim());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tbSearchName.Text = "";
+            dataGridSearchProduct.DataSource = ProductDAO.returnDataSource();
+            foreach (RadioButton rb in flSearchCategory.Controls.OfType<RadioButton>())
+            {
+                if (rb.Checked)
+                    rb.Checked = false;
+            }
+        }
+
+        private void tabPageSearch_Click(object sender, EventArgs e)
+        {
+            flSearchCategory.Controls.Clear();
+            DataTable dtCategory = CategoryDAO.returnDataSource();
+            for (int i = 0; i < dtCategory.Rows.Count; i++)
+            {
+                RadioButton rb = new RadioButton();
+                rb.Text = dtCategory.Rows[i]["name"].ToString();
+                flSearchCategory.Controls.Add(rb);
+            }
+        }
+
+        private void btnSearchCategory_Click(object sender, EventArgs e)
+        {
+            List<String> values = new List<String>();
+            foreach (RadioButton rb in flSearchCategory.Controls.OfType<RadioButton>())
+            {
+                if (rb.Checked)
+                    values.Add(rb.Text);
+            }
+            String nameCategory = values.ElementAt(0).ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT id FROM category WHERE category.name = '" + nameCategory + "'";
+            SqlDataReader dr = Connection.select(cmd);
+            DataTable dtNameCategory = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd.CommandText, Connection.connect());
+            da.Fill(dtNameCategory);
+            int idCategory = int.Parse(dtNameCategory.Rows[0]["id"].ToString());
+
+            cmd.CommandText = "SELECT id FROM subcategory WHERE subcategory.category_id = " + idCategory;
+            SqlDataReader dr1 = Connection.select(cmd);
+            DataTable dtNameCategory1 = new DataTable();
+            SqlDataAdapter da1 = new SqlDataAdapter(cmd.CommandText, Connection.connect());
+            da1.Fill(dtNameCategory1);
+
+            List<int> listIdSubcategory = new List<int>();
+            for (int i = 0; i < dtNameCategory1.Rows.Count; i++)
+            {
+                listIdSubcategory.Add(int.Parse(dtNameCategory1.Rows[i]["id"].ToString()));
+            }
+
+            DataTable combinedData = new DataTable();
+
+            foreach(int element in listIdSubcategory)
+            {
+                cmd.CommandText = "SELECT product.id, product.name, product.label, product.quantity_available, product.price, product.image FROM product, product_subcategory WHERE product_subcategory.subcategory_id = " + element + " AND product_subcategory.product_id = product.id";
+                SqlDataReader dr2 = Connection.select(cmd);
+                DataTable dtNameCategory2 = new DataTable();
+                SqlDataAdapter da2 = new SqlDataAdapter(cmd.CommandText, Connection.connect());
+                da2.Fill(dtNameCategory2);
+                combinedData.Merge(dtNameCategory2);
+            }
+
+            dataGridSearchProduct.DataSource = combinedData;
+
         }
     }
 }

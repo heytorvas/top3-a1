@@ -128,5 +128,17 @@ namespace A1.dao
 
             return dt;
         }
+
+        public static DataTable returnDataSourceSearch(String name)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT * FROM product WHERE product.name LIKE '%" + name + "%'";
+            SqlDataReader dr = Connection.select(cmd);
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd.CommandText, Connection.connect());
+            da.Fill(dt);
+
+            return dt;
+        }
     }
 }

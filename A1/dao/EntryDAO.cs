@@ -84,7 +84,6 @@ namespace A1.dao
             {
                 while (dr.Read())
                 {
-                    dr.Read();
                     Entry entry = new Entry();
                     entry.Id = (int)dr["id"];
                     entry.Product.Id = (int)dr["product_id"];
