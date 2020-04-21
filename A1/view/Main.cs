@@ -52,36 +52,38 @@ namespace A1
                 rb.Text = dtCategory.Rows[i]["name"].ToString();
                 flSearchCategory.Controls.Add(rb);
             }
-
-
         }
 
         public void SetLabel(string newText)
         {
             Invoke(new Action(() => labelTypeUser.Text = newText));
-            //Invoke(new Action(() => labelTypeUser.Visible = false));
             if (labelTypeUser.Text == "Employee")
                 tabControl.TabPages.Remove(tabPageUser);
         }
 
         private void btnCategorySave_Click(object sender, EventArgs e)
         {
-            category.Name = tbCategoryName.Text;
-
-            categoryDAO.insert(category);
-            dataGridCategory.DataSource = CategoryDAO.returnDataSource();
-            cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
-
-            flSearchCategory.Controls.Clear();
-            DataTable dtCategory = CategoryDAO.returnDataSource();
-            for (int i = 0; i < dtCategory.Rows.Count; i++)
+            if (tbCategoryName.Text != "")
             {
-                RadioButton rb = new RadioButton();
-                rb.Text = dtCategory.Rows[i]["name"].ToString();
-                flSearchCategory.Controls.Add(rb);
-            }
+                category.Name = tbCategoryName.Text;
 
-            btnCategoryClear_Click(sender, e);
+                categoryDAO.insert(category);
+                dataGridCategory.DataSource = CategoryDAO.returnDataSource();
+                cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
+
+                flSearchCategory.Controls.Clear();
+                DataTable dtCategory = CategoryDAO.returnDataSource();
+                for (int i = 0; i < dtCategory.Rows.Count; i++)
+                {
+                    RadioButton rb = new RadioButton();
+                    rb.Text = dtCategory.Rows[i]["name"].ToString();
+                    flSearchCategory.Controls.Add(rb);
+                }
+                btnCategoryClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Name field cannot be blank. Try again!");
+
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -102,17 +104,23 @@ namespace A1
 
         private void btnUserSave_Click(object sender, EventArgs e)
         {
-            user.Name = tbUserName.Text;
-            user.Cpf = tbUserCPF.Text;
-            user.Email = tbUserEmail.Text;
-            user.Password = tbUserPassword.Text;
-            user.Telephone = tbUserTelephone.Text;
+            if (tbUserName.Text != "")
+            {
+                user.Name = tbUserName.Text;
+                user.Cpf = tbUserCPF.Text;
+                user.Email = tbUserEmail.Text;
+                user.Password = tbUserPassword.Text;
+                user.Telephone = tbUserTelephone.Text;
 
-            userDAO.insert(user);
-            dataGridUser.DataSource = UserDAO.returnDataSource();
-            cbEntryUser.DataSource = dataGridUser.DataSource;
-            cbWithdrawalUser.DataSource = dataGridUser.DataSource;
-            btnUserClear_Click(sender, e);
+                userDAO.insert(user);
+                dataGridUser.DataSource = UserDAO.returnDataSource();
+                cbEntryUser.DataSource = dataGridUser.DataSource;
+                cbWithdrawalUser.DataSource = dataGridUser.DataSource;
+                btnUserClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Name field cannot be blank. Try again!");
+
         }
 
         private void btnUserClear_Click(object sender, EventArgs e)
@@ -132,72 +140,82 @@ namespace A1
 
         private void btnSubCategorySave_Click(object sender, EventArgs e)
         {
-            if (subcategory.Category == null)
-                subcategory.Category = new Category();
+            if (tbSubCategoryName.Text != "")
+            {
+                if (subcategory.Category == null)
+                    subcategory.Category = new Category();
 
-            subcategory.Name = tbSubCategoryName.Text;
-            subcategory.Category.Id = (int)cbSubcategoryCategory.SelectedValue;
+                subcategory.Name = tbSubCategoryName.Text;
+                subcategory.Category.Id = (int)cbSubcategoryCategory.SelectedValue;
 
-            subcategoryDAO.insert(subcategory);
-            dataGridSubcategory.DataSource = SubcategoryDAO.returnDataSource();
+                subcategoryDAO.insert(subcategory);
+                dataGridSubcategory.DataSource = SubcategoryDAO.returnDataSource();
 
-            checkedListBoxSubcategory.Items.Clear();
+                checkedListBoxSubcategory.Items.Clear();
 
-            DataTable dtSubCategory1 = SubcategoryDAO.returnDataSource();
-            for (int i = 0; i < dtSubCategory1.Rows.Count; i++)
-                checkedListBoxSubcategory.Items.Add(dtSubCategory1.Rows[i]["name"].ToString());
-            btnSubCategoryClear_Click(sender, e);
+                DataTable dtSubCategory1 = SubcategoryDAO.returnDataSource();
+                for (int i = 0; i < dtSubCategory1.Rows.Count; i++)
+                    checkedListBoxSubcategory.Items.Add(dtSubCategory1.Rows[i]["name"].ToString());
+                btnSubCategoryClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Name field cannot be blank. Try again!");
         }
 
         private void btnProductSave_Click(object sender, EventArgs e)
         {
-            if (product.Subcategories == null)
-                product.Subcategories = new List<Subcategory>();
-
-            foreach (string word in checkedListBoxSubcategory.CheckedItems)
+            if (tbProductName.Text != "")
             {
-                DataTable returnDataTableSelect = SubcategoryDAO.returnDataSourceCheckbox(word);
-                for (int i = 0; i < returnDataTableSelect.Rows.Count; i++)
+                if (product.Subcategories == null)
+                    product.Subcategories = new List<Subcategory>();
+
+                foreach (string word in checkedListBoxSubcategory.CheckedItems)
                 {
-                    Subcategory sub = new Subcategory();
-                    sub.Id = (int)returnDataTableSelect.Rows[i]["id"];
-                    sub.Name = returnDataTableSelect.Rows[i]["name"].ToString();
-                    if (sub.Category == null)
-                        sub.Category = new Category();
-                    sub.Category.Id = (int)returnDataTableSelect.Rows[i]["category_id"];
-                    product.Subcategories.Add(sub);
+                    DataTable returnDataTableSelect = SubcategoryDAO.returnDataSourceCheckbox(word);
+                    for (int i = 0; i < returnDataTableSelect.Rows.Count; i++)
+                    {
+                        Subcategory sub = new Subcategory();
+                        sub.Id = (int)returnDataTableSelect.Rows[i]["id"];
+                        sub.Name = returnDataTableSelect.Rows[i]["name"].ToString();
+                        if (sub.Category == null)
+                            sub.Category = new Category();
+                        sub.Category.Id = (int)returnDataTableSelect.Rows[i]["category_id"];
+                        product.Subcategories.Add(sub);
+                    }
                 }
+
+                product.Name = tbProductName.Text;
+                product.Label = tbProductLabel.Text;
+                product.Price = 0;
+                product.QuantityAvailable = 0;
+
+                string fname = tbProductName.Text + ".jpg";
+                string folder = "C:\\Users\\Heytor\\Desktop\\devCSharp\\A1\\A1\\Files";
+                string pathstring = System.IO.Path.Combine(folder, fname);
+                Image a = pbProductImage.Image;
+                a.Save(pathstring);
+
+                product.Image = pathstring;
+
+                int product_id = productDAO.insertReturned(product);
+
+                foreach (Subcategory sub1 in product.Subcategories)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = "INSERT INTO product_subcategory(subcategory_id, product_id) values (@subcategory_id, @product_id)";
+                    cmd.Parameters.AddWithValue("@subcategory_id", sub1.Id);
+                    cmd.Parameters.AddWithValue("@product_id", product_id);
+                    Connection.crud(cmd);
+                }
+
+                dataGridProduct.DataSource = ProductDAO.returnDataSource();
+                cbEntryProduct.DataSource = dataGridProduct.DataSource;
+                cbWithdrawalProduct.DataSource = dataGridProduct.DataSource;
+                dataGridSearchProduct.DataSource = ProductDAO.returnDataSource();
+                btnProductClear_Click(sender, e);
             }
-
-            product.Name = tbProductName.Text;
-            product.Label = tbProductLabel.Text;
-            product.Price = 0;
-            product.QuantityAvailable = 0;
-
-            string fname = tbProductName.Text + ".jpg";
-            string folder = "C:\\Users\\Heytor\\Desktop\\devCSharp\\A1\\A1\\Files";
-            string pathstring = System.IO.Path.Combine(folder, fname);
-            Image a = pbProductImage.Image;
-            a.Save(pathstring);
-
-            product.Image = pathstring;
-
-            int product_id = productDAO.insertReturned(product);
-
-            foreach (Subcategory sub1 in product.Subcategories)
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "INSERT INTO product_subcategory(subcategory_id, product_id) values (@subcategory_id, @product_id)";
-                cmd.Parameters.AddWithValue("@subcategory_id", sub1.Id);
-                cmd.Parameters.AddWithValue("@product_id", product_id);
-                Connection.crud(cmd);
-            }
-
-            dataGridProduct.DataSource = ProductDAO.returnDataSource();
-            cbEntryProduct.DataSource = dataGridProduct.DataSource;
-            cbWithdrawalProduct.DataSource = dataGridProduct.DataSource;
-            dataGridSearchProduct.DataSource = ProductDAO.returnDataSource();
-            btnProductClear_Click(sender, e);
+            else
+                MessageBox.Show("Name field cannot be blank. Try again!");
         }
 
         private void cbUserType_SelectedIndexChanged(object sender, EventArgs e)
@@ -234,36 +252,45 @@ namespace A1
 
         private void btnUserUpdate_Click_1(object sender, EventArgs e)
         {
+            if (tbUserName.Text != "")
+            {
+                user.Id = idUser;
+                user.Name = tbUserName.Text;
+                user.Cpf = tbUserCPF.Text;
+                user.Email = tbUserEmail.Text;
+                user.Password = tbUserPassword.Text;
+                user.Telephone = tbUserTelephone.Text;
 
-            user.Id = idUser;
-            user.Name = tbUserName.Text;
-            user.Cpf = tbUserCPF.Text;
-            user.Email = tbUserEmail.Text;
-            user.Password = tbUserPassword.Text;
-            user.Telephone = tbUserTelephone.Text;
-
-            userDAO.update(user);
-            dataGridUser.DataSource = UserDAO.returnDataSource();
-            cbEntryUser.DataSource = dataGridUser.DataSource;
-            cbWithdrawalUser.DataSource = dataGridUser.DataSource;
-            btnUserClear_Click(sender, e);
+                userDAO.update(user);
+                dataGridUser.DataSource = UserDAO.returnDataSource();
+                cbEntryUser.DataSource = dataGridUser.DataSource;
+                cbWithdrawalUser.DataSource = dataGridUser.DataSource;
+                btnUserClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Click on user at DataGrid to update. Try again!");
 
         }
 
         private void btnUserDelete_Click(object sender, EventArgs e)
         {
-            user.Id = idUser;
-            user.Name = tbUserName.Text;
-            user.Cpf = tbUserCPF.Text;
-            user.Email = tbUserEmail.Text;
-            user.Password = tbUserPassword.Text;
-            user.Telephone = tbUserPassword.Text;
+            if (tbUserName.Text != "")
+            {
+                user.Id = idUser;
+                user.Name = tbUserName.Text;
+                user.Cpf = tbUserCPF.Text;
+                user.Email = tbUserEmail.Text;
+                user.Password = tbUserPassword.Text;
+                user.Telephone = tbUserPassword.Text;
 
-            userDAO.delete(user);
-            dataGridUser.DataSource = UserDAO.returnDataSource();
-            cbEntryUser.DataSource = dataGridUser.DataSource;
-            cbWithdrawalUser.DataSource = dataGridUser.DataSource;
-            btnUserClear_Click(sender, e);
+                userDAO.delete(user);
+                dataGridUser.DataSource = UserDAO.returnDataSource();
+                cbEntryUser.DataSource = dataGridUser.DataSource;
+                cbWithdrawalUser.DataSource = dataGridUser.DataSource;
+                btnUserClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Click on user at DataGrid to delete. Try again!");
         }
 
         private void dataGridCategory_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -274,46 +301,56 @@ namespace A1
 
         private void btnCategoryUpdate_Click(object sender, EventArgs e)
         {
-            category.Id = idCategory;
-            category.Name = tbCategoryName.Text;
-
-            categoryDAO.update(category);
-            dataGridCategory.DataSource = CategoryDAO.returnDataSource();
-            cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
-
-            flSearchCategory.Controls.Clear();
-            DataTable dtCategory = CategoryDAO.returnDataSource();
-            for (int i = 0; i < dtCategory.Rows.Count; i++)
+            if (tbCategoryName.Text != "")
             {
-                RadioButton rb = new RadioButton();
-                rb.Text = dtCategory.Rows[i]["name"].ToString();
-                flSearchCategory.Controls.Add(rb);
-            }
+                category.Id = idCategory;
+                category.Name = tbCategoryName.Text;
 
-            btnCategoryClear_Click(sender, e);
+                categoryDAO.update(category);
+                dataGridCategory.DataSource = CategoryDAO.returnDataSource();
+                cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
+
+                flSearchCategory.Controls.Clear();
+                DataTable dtCategory = CategoryDAO.returnDataSource();
+                for (int i = 0; i < dtCategory.Rows.Count; i++)
+                {
+                    RadioButton rb = new RadioButton();
+                    rb.Text = dtCategory.Rows[i]["name"].ToString();
+                    flSearchCategory.Controls.Add(rb);
+                }
+
+                btnCategoryClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Click on category at DataGrid to update. Try again!");
         }
 
         private void btnCategoryDelete_Click(object sender, EventArgs e)
         {
-            category.Id = idCategory;
-            category.Name = tbCategoryName.Text;
-
-            categoryDAO.delete(category);
-            dataGridCategory.DataSource = CategoryDAO.returnDataSource();
-            cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
-
-            flSearchCategory.Controls.Clear();
-            DataTable dtCategory = CategoryDAO.returnDataSource();
-            for (int i = 0; i < dtCategory.Rows.Count; i++)
+            if (tbCategoryName.Text != "")
             {
-                RadioButton rb = new RadioButton();
-                rb.Text = dtCategory.Rows[i]["name"].ToString();
-                flSearchCategory.Controls.Add(rb);
+                category.Id = idCategory;
+                category.Name = tbCategoryName.Text;
+
+                categoryDAO.delete(category);
+                dataGridCategory.DataSource = CategoryDAO.returnDataSource();
+                cbSubcategoryCategory.DataSource = dataGridCategory.DataSource;
+
+                flSearchCategory.Controls.Clear();
+                DataTable dtCategory = CategoryDAO.returnDataSource();
+                for (int i = 0; i < dtCategory.Rows.Count; i++)
+                {
+                    RadioButton rb = new RadioButton();
+                    rb.Text = dtCategory.Rows[i]["name"].ToString();
+                    flSearchCategory.Controls.Add(rb);
+                }
+
+                btnCategoryClear_Click(sender, e);
             }
-
-            btnCategoryClear_Click(sender, e);
+            else
+                MessageBox.Show("Click on category at DataGrid to delete. Try again!");
         }
-
+            
         private void dataGridSubcategory_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             idSubcategory = (int)dataGridSubcategory.CurrentRow.Cells[0].Value;
@@ -325,37 +362,50 @@ namespace A1
 
         private void btnSubCategoryUpdate_Click(object sender, EventArgs e)
         {
-            subcategory.Id = idSubcategory;
-            subcategory.Name = tbSubCategoryName.Text;
-            if (subcategory.Category == null)
-                subcategory.Category = new Category();
-            subcategory.Category.Id = (int)cbSubcategoryCategory.SelectedValue;
+            if (tbSubCategoryName.Text != "")
+            {
+                subcategory.Id = idSubcategory;
+                subcategory.Name = tbSubCategoryName.Text;
+                if (subcategory.Category == null)
+                    subcategory.Category = new Category();
+                subcategory.Category.Id = (int)cbSubcategoryCategory.SelectedValue;
 
-            subcategoryDAO.update(subcategory);
-            dataGridSubcategory.DataSource = SubcategoryDAO.returnDataSource();
+                subcategoryDAO.update(subcategory);
+                dataGridSubcategory.DataSource = SubcategoryDAO.returnDataSource();
 
-            checkedListBoxSubcategory.Items.Clear();
+                checkedListBoxSubcategory.Items.Clear();
 
-            DataTable dtSubCategory1 = SubcategoryDAO.returnDataSource();
-            for (int i = 0; i < dtSubCategory1.Rows.Count; i++)
-                checkedListBoxSubcategory.Items.Add(dtSubCategory1.Rows[i]["name"].ToString());
-            btnSubCategoryClear_Click(sender, e);
+                DataTable dtSubCategory1 = SubcategoryDAO.returnDataSource();
+                for (int i = 0; i < dtSubCategory1.Rows.Count; i++)
+                    checkedListBoxSubcategory.Items.Add(dtSubCategory1.Rows[i]["name"].ToString());
+                btnSubCategoryClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Click on subcategory at DataGrid to update. Try again!");
         }
 
         private void btnSubCategoryDelete_Click(object sender, EventArgs e)
         {
-            subcategory.Id = idSubcategory;
-            subcategory.Name = tbSubCategoryName.Text;
-            if (subcategory.Category == null)
-                subcategory.Category = new Category();
-            subcategory.Category.Id = (int)cbSubcategoryCategory.SelectedValue;
+            if (tbSubCategoryName.Text != "")
+            {
+                subcategory.Id = idSubcategory;
+                subcategory.Name = tbSubCategoryName.Text;
+                if (subcategory.Category == null)
+                    subcategory.Category = new Category();
+                subcategory.Category.Id = (int)cbSubcategoryCategory.SelectedValue;
 
-            checkedListBoxSubcategory.Items.Clear();
+                subcategoryDAO.delete(subcategory);
+                dataGridSubcategory.DataSource = SubcategoryDAO.returnDataSource();
 
-            DataTable dtSubCategory1 = SubcategoryDAO.returnDataSource();
-            for (int i = 0; i < dtSubCategory1.Rows.Count; i++)
-                checkedListBoxSubcategory.Items.Add(dtSubCategory1.Rows[i]["name"].ToString());
-            btnSubCategoryClear_Click(sender, e);
+                checkedListBoxSubcategory.Items.Clear();
+
+                DataTable dtSubCategory1 = SubcategoryDAO.returnDataSource();
+                for (int i = 0; i < dtSubCategory1.Rows.Count; i++)
+                    checkedListBoxSubcategory.Items.Add(dtSubCategory1.Rows[i]["name"].ToString());
+                btnSubCategoryClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Click on subcategory at DataGrid to delete. Try again!");
         }
 
         private void dataGridProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -389,117 +439,145 @@ namespace A1
                     }
                 }
             }
-
         }
 
         private void btnProductUpdate_Click(object sender, EventArgs e)
         {
-            if (product.Subcategories == null)
-                product.Subcategories = new List<Subcategory>();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "DELETE FROM product_subcategory WHERE product_id = @product_id";
-            cmd.Parameters.AddWithValue("@product_id", idProduct);
-            Connection.crud(cmd);
-
-            foreach (string word in checkedListBoxSubcategory.CheckedItems)
+            if (tbProductName.Text != "")
             {
-                DataTable returnDataTableSelect = SubcategoryDAO.returnDataSourceCheckbox(word);
-                for (int i = 0; i < returnDataTableSelect.Rows.Count; i++)
+                if (product.Subcategories == null)
+                    product.Subcategories = new List<Subcategory>();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "DELETE FROM product_subcategory WHERE product_id = @product_id";
+                cmd.Parameters.AddWithValue("@product_id", idProduct);
+                Connection.crud(cmd);
+
+                foreach (string word in checkedListBoxSubcategory.CheckedItems)
                 {
-                    Subcategory sub = new Subcategory();
-                    sub.Id = (int)returnDataTableSelect.Rows[i]["id"];
-                    sub.Name = returnDataTableSelect.Rows[i]["name"].ToString();
-                    if (sub.Category == null)
-                        sub.Category = new Category();
-                    sub.Category.Id = (int)returnDataTableSelect.Rows[i]["category_id"];
-                    product.Subcategories.Add(sub);
+                    DataTable returnDataTableSelect = SubcategoryDAO.returnDataSourceCheckbox(word);
+                    for (int i = 0; i < returnDataTableSelect.Rows.Count; i++)
+                    {
+                        Subcategory sub = new Subcategory();
+                        sub.Id = (int)returnDataTableSelect.Rows[i]["id"];
+                        sub.Name = returnDataTableSelect.Rows[i]["name"].ToString();
+                        if (sub.Category == null)
+                            sub.Category = new Category();
+                        sub.Category.Id = (int)returnDataTableSelect.Rows[i]["category_id"];
+                        product.Subcategories.Add(sub);
+                    }
                 }
+
+                product.Id = idProduct;
+                product.Name = tbProductName.Text;
+                product.Label = tbProductLabel.Text;
+                product.Price = 0;
+
+                productDAO.update(product);
+
+                foreach (Subcategory sub1 in product.Subcategories)
+                {
+                    SqlCommand cmd1 = new SqlCommand();
+                    cmd1.CommandText = "INSERT INTO product_subcategory(subcategory_id, product_id) values (@subcategory_id, @product_id)";
+                    cmd1.Parameters.AddWithValue("@subcategory_id", sub1.Id);
+                    cmd1.Parameters.AddWithValue("@product_id", idProduct);
+                    Connection.crud(cmd1);
+                }
+
+                dataGridProduct.DataSource = ProductDAO.returnDataSource();
+                dataGridSearchProduct.DataSource = ProductDAO.returnDataSource();
+                btnProductClear_Click(sender, e);
             }
-
-            product.Id = idProduct;
-            product.Name = tbProductName.Text;
-            product.Label = tbProductLabel.Text;
-            product.Price = 0;
-
-            productDAO.update(product);
-
-            foreach (Subcategory sub1 in product.Subcategories)
-            {
-                SqlCommand cmd1 = new SqlCommand();
-                cmd1.CommandText = "INSERT INTO product_subcategory(subcategory_id, product_id) values (@subcategory_id, @product_id)";
-                cmd1.Parameters.AddWithValue("@subcategory_id", sub1.Id);
-                cmd1.Parameters.AddWithValue("@product_id", idProduct);
-                Connection.crud(cmd1);
-            }
-
-            dataGridProduct.DataSource = ProductDAO.returnDataSource();
-            dataGridSearchProduct.DataSource = ProductDAO.returnDataSource();
-            btnProductClear_Click(sender, e);
+            else
+                MessageBox.Show("Click on product at DataGrid to update. Try again!");
         }
 
         private void btnProductDelete_Click(object sender, EventArgs e)
         {
-            if (product.Subcategories == null)
-                product.Subcategories = new List<Subcategory>();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "DELETE FROM product_subcategory WHERE product_id = @product_id";
-            cmd.Parameters.AddWithValue("@product_id", idProduct);
-            Connection.crud(cmd);
-
-            foreach (string word in checkedListBoxSubcategory.CheckedItems)
+            if (tbProductName.Text != "")
             {
-                DataTable returnDataTableSelect = SubcategoryDAO.returnDataSourceCheckbox(word);
-                for (int i = 0; i < returnDataTableSelect.Rows.Count; i++)
+                if (product.Subcategories == null)
+                    product.Subcategories = new List<Subcategory>();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "DELETE FROM product_subcategory WHERE product_id = @product_id";
+                cmd.Parameters.AddWithValue("@product_id", idProduct);
+                Connection.crud(cmd);
+
+                foreach (string word in checkedListBoxSubcategory.CheckedItems)
                 {
-                    Subcategory sub = new Subcategory();
-                    sub.Id = (int)returnDataTableSelect.Rows[i]["id"];
-                    sub.Name = returnDataTableSelect.Rows[i]["name"].ToString();
-                    if (sub.Category == null)
-                        sub.Category = new Category();
-                    sub.Category.Id = (int)returnDataTableSelect.Rows[i]["category_id"];
-                    product.Subcategories.Add(sub);
+                    DataTable returnDataTableSelect = SubcategoryDAO.returnDataSourceCheckbox(word);
+                    for (int i = 0; i < returnDataTableSelect.Rows.Count; i++)
+                    {
+                        Subcategory sub = new Subcategory();
+                        sub.Id = (int)returnDataTableSelect.Rows[i]["id"];
+                        sub.Name = returnDataTableSelect.Rows[i]["name"].ToString();
+                        if (sub.Category == null)
+                            sub.Category = new Category();
+                        sub.Category.Id = (int)returnDataTableSelect.Rows[i]["category_id"];
+                        product.Subcategories.Add(sub);
+                    }
                 }
+
+                product.Id = idProduct;
+                product.Name = tbProductName.Text;
+                product.Label = tbProductLabel.Text;
+                product.Price = 0;
+
+                productDAO.delete(product);
+                dataGridProduct.DataSource = ProductDAO.returnDataSource();
+                dataGridSearchProduct.DataSource = ProductDAO.returnDataSource();
+                btnProductClear_Click(sender, e);
             }
-
-            product.Id = idProduct;
-            product.Name = tbProductName.Text;
-            product.Label = tbProductLabel.Text;
-            product.Price = 0;
-
-            productDAO.delete(product);
-            dataGridProduct.DataSource = ProductDAO.returnDataSource();
-            dataGridSearchProduct.DataSource = ProductDAO.returnDataSource();
-            btnProductClear_Click(sender, e);
+            else
+                MessageBox.Show("Click on product at DataGrid to delete. Try again!");
         }
 
         private void btnEntrySave_Click(object sender, EventArgs e)
         {
-            if (entry.Product == null)
-                entry.Product = new Product();
-            if (entry.User == null)
-                entry.User = new User();
+            if (tbEntryQuantity.Text != "")
+            {
+                if (entry.Product == null)
+                    entry.Product = new Product();
+                if (entry.User == null)
+                    entry.User = new User();
 
-            entry.Product.Id = (int)cbEntryProduct.SelectedValue;
-            entry.User.Id = (int)cbEntryUser.SelectedValue;
-            entry.Price = float.Parse(tbEntryPrice.Text.Trim());
-            entry.QuantityEntry = int.Parse(tbEntryQuantity.Text.Trim());
-            entry.DateEntry = dtEntryDate.Value;
+                entry.Product.Id = (int)cbEntryProduct.SelectedValue;
+                entry.User.Id = (int)cbEntryUser.SelectedValue;
+                entry.Price = float.Parse(tbEntryPrice.Text.Trim());
+                entry.QuantityEntry = int.Parse(tbEntryQuantity.Text.Trim());
+                entry.DateEntry = dtEntryDate.Value;
 
-            entryDAO.insert(entry);
-            dataGridEntry.DataSource = EntryDAO.returnDataSource();
+                entryDAO.insert(entry);
+                dataGridEntry.DataSource = EntryDAO.returnDataSource();
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "UPDATE product set quantity_available = @quantity_available, price = @price WHERE id = @product_id";
-            cmd.Parameters.AddWithValue("@quantity_available", entry.QuantityEntry);
-            cmd.Parameters.AddWithValue("@price", entry.Price);
-            cmd.Parameters.AddWithValue("@product_id", entry.Product.Id);
-            Connection.crud(cmd);
+                SqlCommand cmd1 = new SqlCommand();
+                cmd1.CommandText = "SELECT * FROM product WHERE id = " + entry.Product.Id;
+                Connection.select(cmd1);
 
-            dataGridProduct.DataSource = ProductDAO.returnDataSource();
+                SqlDataReader dr = Connection.select(cmd1);
+                DataTable dtsub = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd1.CommandText, Connection.connect());
+                da.Fill(dtsub);
+                int qtd_now = 0;
 
-            btnEntryClear_Click(sender, e);
+                DataTable dt = dtsub;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                    qtd_now = int.Parse(dt.Rows[i]["quantity_available"].ToString());
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "UPDATE product set quantity_available = @quantity_available, price = @price WHERE id = @product_id";
+                cmd.Parameters.AddWithValue("@quantity_available", qtd_now + entry.QuantityEntry);
+                cmd.Parameters.AddWithValue("@price", entry.Price);
+                cmd.Parameters.AddWithValue("@product_id", entry.Product.Id);
+                Connection.crud(cmd);
+
+                dataGridProduct.DataSource = ProductDAO.returnDataSource();
+
+                btnEntryClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Quantity field cannot be blank. Try again!");
         }
 
         private void dataGridEntry_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -527,80 +605,95 @@ namespace A1
 
         private void btnEntryUpdate_Click(object sender, EventArgs e)
         {
-            if (entry.Product == null)
-                entry.Product = new Product();
-            if (entry.User == null)
-                entry.User = new User();
+            if (tbEntryQuantity.Text != "")
+            {
+                if (entry.Product == null)
+                    entry.Product = new Product();
+                if (entry.User == null)
+                    entry.User = new User();
 
-            entry.Id = idEntry;
-            entry.Product.Id = (int)cbEntryProduct.SelectedValue;
-            entry.User.Id = (int)cbEntryUser.SelectedValue;
-            entry.Price = float.Parse(tbEntryPrice.Text.Trim());
-            entry.QuantityEntry = int.Parse(tbEntryQuantity.Text.Trim());
-            entry.DateEntry = dtEntryDate.Value;
+                entry.Id = idEntry;
+                entry.Product.Id = (int)cbEntryProduct.SelectedValue;
+                entry.User.Id = (int)cbEntryUser.SelectedValue;
+                entry.Price = float.Parse(tbEntryPrice.Text.Trim());
+                entry.QuantityEntry = int.Parse(tbEntryQuantity.Text.Trim());
+                entry.DateEntry = dtEntryDate.Value;
 
-            entryDAO.update(entry);
-            dataGridEntry.DataSource = EntryDAO.returnDataSource();
-            btnEntryClear_Click(sender, e);
+                entryDAO.update(entry);
+                dataGridEntry.DataSource = EntryDAO.returnDataSource();
+                btnEntryClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Click on entry at DataGrid to update. Try again!");
         }
 
         private void btnEntryDelete_Click(object sender, EventArgs e)
         {
-            if (entry.Product == null)
-                entry.Product = new Product();
-            if (entry.User == null)
-                entry.User = new User();
+            if (tbEntryQuantity.Text != "") 
+            {
+                if (entry.Product == null)
+                    entry.Product = new Product();
+                if (entry.User == null)
+                    entry.User = new User();
 
-            entry.Id = idEntry;
-            entry.Product.Id = (int)cbEntryProduct.SelectedValue;
-            entry.User.Id = (int)cbEntryUser.SelectedValue;
-            entry.Price = float.Parse(tbEntryPrice.Text.Trim());
-            entry.QuantityEntry = int.Parse(tbEntryQuantity.Text.Trim());
-            entry.DateEntry = dtEntryDate.Value;
+                entry.Id = idEntry;
+                entry.Product.Id = (int)cbEntryProduct.SelectedValue;
+                entry.User.Id = (int)cbEntryUser.SelectedValue;
+                entry.Price = float.Parse(tbEntryPrice.Text.Trim());
+                entry.QuantityEntry = int.Parse(tbEntryQuantity.Text.Trim());
+                entry.DateEntry = dtEntryDate.Value;
 
-            entryDAO.delete(entry);
-            dataGridEntry.DataSource = EntryDAO.returnDataSource();
-            btnEntryClear_Click(sender, e);
+                entryDAO.delete(entry);
+                dataGridEntry.DataSource = EntryDAO.returnDataSource();
+                btnEntryClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Click on entry at DataGrid to delete. Try again!");
         }
 
         private void btnWithdrawalSave_Click(object sender, EventArgs e)
         {
-            if (withdrawal.Product == null)
-                withdrawal.Product = new Product();
-            if (withdrawal.User == null)
-                withdrawal.User = new User();
+            if (tbWithdrawalQuantity.Text != "")
+            {
+                if (withdrawal.Product == null)
+                    withdrawal.Product = new Product();
+                if (withdrawal.User == null)
+                    withdrawal.User = new User();
 
-            withdrawal.Product.Id = (int)cbWithdrawalProduct.SelectedValue;
-            withdrawal.User.Id = (int)cbWithdrawalUser.SelectedValue;
-            withdrawal.QuantityWithdrawal = int.Parse(tbWithdrawalQuantity.Text.Trim());
-            withdrawal.DateWithdrawal = dtWithdrawalDate.Value;
+                withdrawal.Product.Id = (int)cbWithdrawalProduct.SelectedValue;
+                withdrawal.User.Id = (int)cbWithdrawalUser.SelectedValue;
+                withdrawal.QuantityWithdrawal = int.Parse(tbWithdrawalQuantity.Text.Trim());
+                withdrawal.DateWithdrawal = dtWithdrawalDate.Value;
 
-            withdrawalDAO.insert(withdrawal);
-            dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
+                withdrawalDAO.insert(withdrawal);
+                dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
 
-            SqlCommand cmd1 = new SqlCommand();
-            cmd1.CommandText = "SELECT * FROM product WHERE id = " + withdrawal.Product.Id;
-            Connection.select(cmd1);
+                SqlCommand cmd1 = new SqlCommand();
+                cmd1.CommandText = "SELECT * FROM product WHERE id = " + withdrawal.Product.Id;
+                Connection.select(cmd1);
 
-            SqlDataReader dr = Connection.select(cmd1);
-            DataTable dtsub = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd1.CommandText, Connection.connect());
-            da.Fill(dtsub);
-            int qtd_now = 0;
+                SqlDataReader dr = Connection.select(cmd1);
+                DataTable dtsub = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd1.CommandText, Connection.connect());
+                da.Fill(dtsub);
+                int qtd_now = 0;
 
-            DataTable dt = dtsub;
-            for (int i = 0; i < dt.Rows.Count; i++)
-                qtd_now = int.Parse(dt.Rows[i]["quantity_available"].ToString());
+                DataTable dt = dtsub;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                    qtd_now = int.Parse(dt.Rows[i]["quantity_available"].ToString());
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "UPDATE product set quantity_available = @quantity_available WHERE id = @product_id";
-            cmd.Parameters.AddWithValue("@quantity_available", qtd_now - withdrawal.QuantityWithdrawal);
-            cmd.Parameters.AddWithValue("@product_id", withdrawal.Product.Id);
-            Connection.crud(cmd);
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "UPDATE product set quantity_available = @quantity_available WHERE id = @product_id";
+                cmd.Parameters.AddWithValue("@quantity_available", qtd_now - withdrawal.QuantityWithdrawal);
+                cmd.Parameters.AddWithValue("@product_id", withdrawal.Product.Id);
+                Connection.crud(cmd);
 
-            dataGridProduct.DataSource = ProductDAO.returnDataSource();
+                dataGridProduct.DataSource = ProductDAO.returnDataSource();
 
-            btnWithdrawalClear_Click(sender, e);
+                btnWithdrawalClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Quantity field cannot be blank. Try again!");
         }
 
         private void dataGridWithdrawal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -626,38 +719,48 @@ namespace A1
 
         private void btnWithdrawalUpdate_Click(object sender, EventArgs e)
         {
-            if (withdrawal.Product == null)
-                withdrawal.Product = new Product();
-            if (withdrawal.User == null)
-                withdrawal.User = new User();
+            if (tbWithdrawalQuantity.Text != "")
+            {
+                if (withdrawal.Product == null)
+                    withdrawal.Product = new Product();
+                if (withdrawal.User == null)
+                    withdrawal.User = new User();
 
-            withdrawal.Id = idWithdrawal;
-            withdrawal.Product.Id = (int)cbWithdrawalProduct.SelectedValue;
-            withdrawal.User.Id = (int)cbWithdrawalUser.SelectedValue;
-            withdrawal.QuantityWithdrawal = int.Parse(tbWithdrawalQuantity.Text.Trim());
-            withdrawal.DateWithdrawal = dtWithdrawalDate.Value;
+                withdrawal.Id = idWithdrawal;
+                withdrawal.Product.Id = (int)cbWithdrawalProduct.SelectedValue;
+                withdrawal.User.Id = (int)cbWithdrawalUser.SelectedValue;
+                withdrawal.QuantityWithdrawal = int.Parse(tbWithdrawalQuantity.Text.Trim());
+                withdrawal.DateWithdrawal = dtWithdrawalDate.Value;
 
-            withdrawalDAO.update(withdrawal);
-            dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
-            btnWithdrawalClear_Click(sender, e);
+                withdrawalDAO.update(withdrawal);
+                dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
+                btnWithdrawalClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Click on withdrawal at DataGrid to update. Try again!");
         }
 
         private void btnWithdrawalDelete_Click(object sender, EventArgs e)
         {
-            if (withdrawal.Product == null)
-                withdrawal.Product = new Product();
-            if (withdrawal.User == null)
-                withdrawal.User = new User();
+            if (tbWithdrawalQuantity.Text != "")
+            {
+                if (withdrawal.Product == null)
+                    withdrawal.Product = new Product();
+                if (withdrawal.User == null)
+                    withdrawal.User = new User();
 
-            withdrawal.Id = idWithdrawal;
-            withdrawal.Product.Id = (int)cbWithdrawalProduct.SelectedValue;
-            withdrawal.User.Id = (int)cbWithdrawalUser.SelectedValue;
-            withdrawal.QuantityWithdrawal = int.Parse(tbWithdrawalQuantity.Text.Trim());
-            withdrawal.DateWithdrawal = dtWithdrawalDate.Value;
+                withdrawal.Id = idWithdrawal;
+                withdrawal.Product.Id = (int)cbWithdrawalProduct.SelectedValue;
+                withdrawal.User.Id = (int)cbWithdrawalUser.SelectedValue;
+                withdrawal.QuantityWithdrawal = int.Parse(tbWithdrawalQuantity.Text.Trim());
+                withdrawal.DateWithdrawal = dtWithdrawalDate.Value;
 
-            withdrawalDAO.delete(withdrawal);
-            dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
-            btnWithdrawalClear_Click(sender, e);
+                withdrawalDAO.delete(withdrawal);
+                dataGridWithdrawal.DataSource = WithdrawalDAO.returnDataSource();
+                btnWithdrawalClear_Click(sender, e);
+            }
+            else
+                MessageBox.Show("Click on withdrawal at DataGrid to delete. Try again!");
         }
 
         private void tabPageUser_Click(object sender, EventArgs e)
@@ -776,9 +879,7 @@ namespace A1
 
             List<int> listIdSubcategory = new List<int>();
             for (int i = 0; i < dtNameCategory1.Rows.Count; i++)
-            {
                 listIdSubcategory.Add(int.Parse(dtNameCategory1.Rows[i]["id"].ToString()));
-            }
 
             DataTable combinedData = new DataTable();
 
@@ -791,9 +892,7 @@ namespace A1
                 da2.Fill(dtNameCategory2);
                 combinedData.Merge(dtNameCategory2);
             }
-
             dataGridSearchProduct.DataSource = combinedData;
-
         }
     }
 }
